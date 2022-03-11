@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TR-808 Drum Pad Beat maker</string>
+    <string name="app_name">DrumSounds Drum Pad Beat maker</string>
     <string name="textView">bd_short_01</string>
     <string name="textView2">bd_long_02</string>
     <string name="textView3">bd_long_03</string>

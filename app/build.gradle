@@ -8,7 +8,7 @@ android {
     compileSdkVersion 31
 
     defaultConfig {
-        applicationId "jp.chikaharu11.instant_drumpad_tr808"
+        applicationId "jp.chikaharu11.instant_drumpad_drums"
         minSdkVersion 26
         targetSdkVersion 31
         versionCode 27

@@ -1,4 +1,4 @@
-package jp.chikaharu11.instant_drumpad_tr808
+package jp.chikaharu11.instant_drumpad_drums
 
 import android.Manifest
 import android.animation.Animator
@@ -31,7 +31,7 @@ import com.google.android.material.snackbar.Snackbar
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import io.realm.kotlin.createObject
-import jp.chikaharu11.instant_drumpad_tr808.databinding.ActivityMainBinding
+import jp.chikaharu11.instant_drumpad_drums.databinding.ActivityMainBinding
 import java.util.*
 import kotlin.math.hypot
 
@@ -45,38 +45,22 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
     private lateinit var adViewContainer: FrameLayout
     private lateinit var admobmAdView: AdView
 
-    private var mpDuration = 320
-    private var mpDuration2 = 625
-    private var mpDuration3 = 1294
-    private var mpDuration4 = 1033
-    private var mpDuration5 = 1465
-    private var mpDuration6 = 1072
-    private var mpDuration7 = 794
-    private var mpDuration8 = 1065
-    private var mpDuration9 = 1065
-    private var mpDuration10 = 1137
-    private var mpDuration11 = 773
-    private var mpDuration12 = 1070
-    private var mpDuration13 = 1050
-    private var mpDuration14 = 608
-    private var mpDuration15 = 55
-
-    private var actionTitle = "rimshot_01"
-    private var padText1 = "tr_8_cymbal_01"
-    private var padText2 = "open_hi_hat_01"
-    private var padText3 = "clsd_hi_hat_01"
-    private var padText4 = "cowbell_01b"
-    private var padText5 = "low_tom_01"
-    private var padText6 = "snare_drum_01"
-    private var padText7 = "tr_8_rimshot_03"
-    private var padText8 = "mid_tom_01"
-    private var padText9 = "bass_drum_short_01"
-    private var padText10 = "claves_02"
-    private var padText11 = "high_tom_01"
-    private var padText12 = "high_conga_01"
-    private var padText13 = "tr_909_cymbal_01"
-    private var padText14 = "tr_909_cymbal_02"
-    private var padText15 = "clap_01"
+    private var actionTitle = "bass_100_01".replace("_"," ").uppercase() + " loop"
+    private var padText1 = "cymbal_01".replace("_"," ").uppercase()
+    private var padText2 = "".replace("_"," ").uppercase()
+    private var padText3 = "cymbal_02".replace("_"," ").uppercase()
+    private var padText4 = "open_hat_01".replace("_"," ").uppercase()
+    private var padText5 = "".replace("_"," ").uppercase()
+    private var padText6 = "cymbal_03".replace("_"," ").uppercase()
+    private var padText7 = "closed_hat_01".replace("_"," ").uppercase()
+    private var padText8 = "tom_02".replace("_"," ").uppercase()
+    private var padText9 = "tom_01".replace("_"," ").uppercase()
+    private var padText10 = "snare_01".replace("_"," ").uppercase()
+    private var padText11 = "kick_01".replace("_"," ").uppercase()
+    private var padText12 = "tom_03".replace("_"," ").uppercase()
+    private var padText13 = "".replace("_"," ").uppercase()
+    private var padText14 = "".replace("_"," ").uppercase()
+    private var padText15 = "".replace("_"," ").uppercase()
 
     private var count = 0.5f
     private var bpm = 1.0f
@@ -142,8 +126,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
     private lateinit var soundPool: SoundPool
 
     private lateinit var mp: MediaPlayer
-
-    private lateinit var getmpDuration: MediaPlayer
 
     private lateinit var lmp: LoopMediaPlayer
 
@@ -384,44 +366,88 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
             }
         }
 
-        binding.includeMainView.textView.text = padText1.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        binding.includeMainView2.textView.text = padText2.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        binding.includeMainView3.textView.text = padText3.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        binding.includeMainView4.textView.text = padText4.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        binding.includeMainView5.textView.text = padText5.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        binding.includeMainView6.textView.text = padText6.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        binding.includeMainView7.textView.text = padText7.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        binding.includeMainView8.textView.text = padText8.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        binding.includeMainView9.textView.text = padText9.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        binding.includeMainView10.textView.text = padText10.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        binding.includeMainView11.textView.text = padText11.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        binding.includeMainView12.textView.text = padText12.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        binding.includeMainView13.textView.text = padText13.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        binding.includeMainView14.textView.text = padText14.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        binding.includeMainView15.textView.text = padText15.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        findViewById<View>(R.id.include_view).findViewById<TextView>(R.id.padText).text = soundPoolVolume.toString().replace("f", "") + "            " + soundPoolTempo.toString().replace("f", "") + "\n" + padText1.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        findViewById<View>(R.id.include_view2).findViewById<TextView>(R.id.padText).text = soundPoolVolume2.toString().replace("f", "") + "            " + soundPoolTempo2.toString().replace("f", "") + "\n" + padText2.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        findViewById<View>(R.id.include_view3).findViewById<TextView>(R.id.padText).text = soundPoolVolume3.toString().replace("f", "") + "            " + soundPoolTempo3.toString().replace("f", "") + "\n" + padText3.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        findViewById<View>(R.id.include_view4).findViewById<TextView>(R.id.padText).text = soundPoolVolume4.toString().replace("f", "") + "            " + soundPoolTempo4.toString().replace("f", "") + "\n" + padText4.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        findViewById<View>(R.id.include_view5).findViewById<TextView>(R.id.padText).text = soundPoolVolume5.toString().replace("f", "") + "            " + soundPoolTempo5.toString().replace("f", "") + "\n" + padText5.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        findViewById<View>(R.id.include_view6).findViewById<TextView>(R.id.padText).text = soundPoolVolume6.toString().replace("f", "") + "            " + soundPoolTempo6.toString().replace("f", "") + "\n" + padText6.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        findViewById<View>(R.id.include_view7).findViewById<TextView>(R.id.padText).text = soundPoolVolume7.toString().replace("f", "") + "            " + soundPoolTempo7.toString().replace("f", "") + "\n" + padText7.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        findViewById<View>(R.id.include_view8).findViewById<TextView>(R.id.padText).text = soundPoolVolume8.toString().replace("f", "") + "            " + soundPoolTempo8.toString().replace("f", "") + "\n" + padText8.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        findViewById<View>(R.id.include_view9).findViewById<TextView>(R.id.padText).text = soundPoolVolume9.toString().replace("f", "") + "            " + soundPoolTempo9.toString().replace("f", "") + "\n" + padText9.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        findViewById<View>(R.id.include_view10).findViewById<TextView>(R.id.padText).text = soundPoolVolume10.toString().replace("f", "") + "            " + soundPoolTempo10.toString().replace("f", "") + "\n" + padText10.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        findViewById<View>(R.id.include_view11).findViewById<TextView>(R.id.padText).text = soundPoolVolume11.toString().replace("f", "") + "            " + soundPoolTempo11.toString().replace("f", "") + "\n" + padText11.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        findViewById<View>(R.id.include_view12).findViewById<TextView>(R.id.padText).text = soundPoolVolume12.toString().replace("f", "") + "            " + soundPoolTempo12.toString().replace("f", "") + "\n" + padText12.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        findViewById<View>(R.id.include_view13).findViewById<TextView>(R.id.padText).text = soundPoolVolume13.toString().replace("f", "") + "            " + soundPoolTempo13.toString().replace("f", "") + "\n" + padText13.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        findViewById<View>(R.id.include_view14).findViewById<TextView>(R.id.padText).text = soundPoolVolume14.toString().replace("f", "") + "            " + soundPoolTempo14.toString().replace("f", "") + "\n" + padText14.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-        findViewById<View>(R.id.include_view15).findViewById<TextView>(R.id.padText).text = soundPoolVolume15.toString().replace("f", "") + "            " + soundPoolTempo15.toString().replace("f", "") + "\n" + padText15.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
-
         val orientation = resources.configuration.orientation
         when (orientation) {
             Configuration.ORIENTATION_PORTRAIT -> {
-                findViewById<TextView>(R.id.padText0).text = "${actionTitle.uppercase()} loop"
+                findViewById<View>(R.id.include_main_view).findViewById<TextView>(R.id.textView).text = "cymbal_01".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_main_view2).findViewById<TextView>(R.id.textView).text = "".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_main_view3).findViewById<TextView>(R.id.textView).text = "cymbal_02".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_main_view4).findViewById<TextView>(R.id.textView).text = "open_hat_01".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_main_view5).findViewById<TextView>(R.id.textView).text = "".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_main_view6).findViewById<TextView>(R.id.textView).text = "cymbal_03".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_main_view7).findViewById<TextView>(R.id.textView).text = "closed_hat_01".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_main_view8).findViewById<TextView>(R.id.textView).text = "tom_02".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_main_view9).findViewById<TextView>(R.id.textView).text = "tom_01".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_main_view10).findViewById<TextView>(R.id.textView).text = "snare_01".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_main_view11).findViewById<TextView>(R.id.textView).text = "kick_01".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_main_view12).findViewById<TextView>(R.id.textView).text = "tom_03".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_main_view13).findViewById<TextView>(R.id.textView).text = "".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_main_view14).findViewById<TextView>(R.id.textView).text = "".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_main_view15).findViewById<TextView>(R.id.textView).text = "".replace("_"," ").uppercase()
+                findViewById<TextView>(R.id.padText0).text = actionTitle
+                findViewById<View>(R.id.include_view).findViewById<TextView>(R.id.padText).text = "cymbal_01".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view2).findViewById<TextView>(R.id.padText).text = "".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view3).findViewById<TextView>(R.id.padText).text = "cymbal_02".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view4).findViewById<TextView>(R.id.padText).text = "open_hat_01".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view5).findViewById<TextView>(R.id.padText).text = "".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view6).findViewById<TextView>(R.id.padText).text = "cymbal_03".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view7).findViewById<TextView>(R.id.padText).text = "tom_02".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view8).findViewById<TextView>(R.id.padText).text = "tom_01".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view9).findViewById<TextView>(R.id.padText).text = "mid_tom_01".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view10).findViewById<TextView>(R.id.padText).text = "snare_01".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view11).findViewById<TextView>(R.id.padText).text = "kick_01".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view12).findViewById<TextView>(R.id.padText).text = "tom_03".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view13).findViewById<TextView>(R.id.padText).text = "".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view14).findViewById<TextView>(R.id.padText).text = "".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view15).findViewById<TextView>(R.id.padText).text = "".replace("_"," ").uppercase()
             }
             Configuration.ORIENTATION_LANDSCAPE -> {
+                padText1 = "cymbal_01".replace("_"," ").uppercase()
+                padText2 = "open_hat_01".replace("_"," ").uppercase()
+                padText3 = "closed_hat_01".replace("_"," ").uppercase()
+                padText4 = "".replace("_"," ").uppercase()
+                padText5 = "tom_02".replace("_"," ").uppercase()
+                padText6 = "snare_01".replace("_"," ").uppercase()
+                padText7 = "".replace("_"," ").uppercase()
+                padText8 = "".replace("_"," ").uppercase()
+                padText9 = "kick_01".replace("_"," ").uppercase()
+                padText10 = "".replace("_"," ").uppercase()
+                padText11 = "tom_01".replace("_"," ").uppercase()
+                padText12 = "tom_03".replace("_"," ").uppercase()
+                padText13 = "cymbal_02".replace("_"," ").uppercase()
+                padText14 = "cymbal_03".replace("_"," ").uppercase()
+                padText15 = "".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view).findViewById<TextView>(R.id.textView).text= "cymbal_01".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view2).findViewById<TextView>(R.id.textView).text= "open_hat_01".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view3).findViewById<TextView>(R.id.textView).text= "closed_hat_01".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view4).findViewById<TextView>(R.id.textView).text= "".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view5).findViewById<TextView>(R.id.textView).text= "tom_02".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view6).findViewById<TextView>(R.id.textView).text= "snare_01".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view7).findViewById<TextView>(R.id.textView).text= "".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view8).findViewById<TextView>(R.id.textView).text= "".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view9).findViewById<TextView>(R.id.textView).text= "kick_01".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view10).findViewById<TextView>(R.id.textView).text= "".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view11).findViewById<TextView>(R.id.textView).text= "tom_01".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view12).findViewById<TextView>(R.id.textView).text= "tom_03".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view13).findViewById<TextView>(R.id.textView).text= "cymbal_02".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view14).findViewById<TextView>(R.id.textView).text= "cymbal_03".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view15).findViewById<TextView>(R.id.textView).text= "".replace("_"," ").uppercase()
                 findViewById<TextView>(R.id.padText0).text = "loop"
+                findViewById<View>(R.id.include_view).findViewById<TextView>(R.id.padText).text = "cymbal_01".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view2).findViewById<TextView>(R.id.padText).text = "open_hat_01".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view3).findViewById<TextView>(R.id.padText).text = "closed_hat_01".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view4).findViewById<TextView>(R.id.padText).text = "".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view5).findViewById<TextView>(R.id.padText).text = "tom_02".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view6).findViewById<TextView>(R.id.padText).text = "snare_01".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view7).findViewById<TextView>(R.id.padText).text = "".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view8).findViewById<TextView>(R.id.padText).text = "".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view9).findViewById<TextView>(R.id.padText).text = "kick_01".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view10).findViewById<TextView>(R.id.padText).text = "".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view11).findViewById<TextView>(R.id.padText).text = "tom_01".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view12).findViewById<TextView>(R.id.padText).text = "tom_03".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view13).findViewById<TextView>(R.id.padText).text = "cymbal_02".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view14).findViewById<TextView>(R.id.padText).text = "cymbal_03".replace("_"," ").uppercase()
+                findViewById<View>(R.id.include_view15).findViewById<TextView>(R.id.padText).text = "".replace("_"," ").uppercase()
             }
             Configuration.ORIENTATION_SQUARE -> {
                 TODO()
@@ -3847,11 +3873,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                     effect(binding.includeMainView.imageView,800)
                     sound1 = soundPool.load(soundList.name, 1)
                     println(soundList.name)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(this, Uri.parse(soundList.name))
-                    getmpDuration.prepare()
-                    mpDuration = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -3868,11 +3889,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 2 && buttonB == 1 -> {
                     effect(binding.includeMainView2.imageView,800)
                     sound2 = soundPool.load(soundList.name, 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(this, Uri.parse(soundList.name))
-                    getmpDuration.prepare()
-                    mpDuration2 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -3889,11 +3905,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 3 && buttonB == 1 -> {
                     effect(binding.includeMainView3.imageView,800)
                     sound3 = soundPool.load(soundList.name, 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(this, Uri.parse(soundList.name))
-                    getmpDuration.prepare()
-                    mpDuration3 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -3910,11 +3921,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 4 && buttonB == 1 -> {
                     effect(binding.includeMainView4.imageView,800)
                     sound4 = soundPool.load(soundList.name, 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(this, Uri.parse(soundList.name))
-                    getmpDuration.prepare()
-                    mpDuration4 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -3931,11 +3937,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 5 && buttonB == 1 -> {
                     effect(binding.includeMainView5.imageView,800)
                     sound5 = soundPool.load(soundList.name, 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(this, Uri.parse(soundList.name))
-                    getmpDuration.prepare()
-                    mpDuration5 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -3952,11 +3953,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 6 && buttonB == 1 -> {
                     effect(binding.includeMainView6.imageView,800)
                     sound6 = soundPool.load(soundList.name, 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(this, Uri.parse(soundList.name))
-                    getmpDuration.prepare()
-                    mpDuration6 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -3973,11 +3969,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 7 && buttonB == 1 -> {
                     effect(binding.includeMainView7.imageView,800)
                     sound7 = soundPool.load(soundList.name, 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(this, Uri.parse(soundList.name))
-                    getmpDuration.prepare()
-                    mpDuration7 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -3994,11 +3985,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 8 && buttonB == 1 -> {
                     effect(binding.includeMainView8.imageView,800)
                     sound8 = soundPool.load(soundList.name, 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(this, Uri.parse(soundList.name))
-                    getmpDuration.prepare()
-                    mpDuration8 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -4015,11 +4001,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 9 && buttonB == 1 -> {
                     effect(binding.includeMainView9.imageView,800)
                     sound9 = soundPool.load(soundList.name, 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(this, Uri.parse(soundList.name))
-                    getmpDuration.prepare()
-                    mpDuration9 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -4036,11 +4017,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 10 && buttonB == 1 -> {
                     effect(binding.includeMainView10.imageView,800)
                     sound10 = soundPool.load(soundList.name, 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(this, Uri.parse(soundList.name))
-                    getmpDuration.prepare()
-                    mpDuration10 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -4057,11 +4033,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 11 && buttonB == 1 -> {
                     effect(binding.includeMainView11.imageView,800)
                     sound11 = soundPool.load(soundList.name, 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(this, Uri.parse(soundList.name))
-                    getmpDuration.prepare()
-                    mpDuration11 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -4078,11 +4049,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 12 && buttonB == 1 -> {
                     effect(binding.includeMainView12.imageView,800)
                     sound12 = soundPool.load(soundList.name, 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(this, Uri.parse(soundList.name))
-                    getmpDuration.prepare()
-                    mpDuration12 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -4099,11 +4065,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 13 && buttonB == 1 -> {
                     effect(binding.includeMainView13.imageView,800)
                     sound13 = soundPool.load(soundList.name, 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(this, Uri.parse(soundList.name))
-                    getmpDuration.prepare()
-                    mpDuration13 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -4120,11 +4081,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 14 && buttonB == 1 -> {
                     effect(binding.includeMainView14.imageView,800)
                     sound14 = soundPool.load(soundList.name, 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(this, Uri.parse(soundList.name))
-                    getmpDuration.prepare()
-                    mpDuration14 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -4141,11 +4097,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 15 && buttonB == 1 -> {
                     effect(binding.includeMainView15.imageView,800)
                     sound15 = soundPool.load(soundList.name, 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(this, Uri.parse(soundList.name))
-                    getmpDuration.prepare()
-                    mpDuration15 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -4175,13 +4126,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 1 && buttonB == 2 -> {
                     effect(binding.includeMainView.imageView,800)
                     sound1 = soundPool.load(assets.openFd(soundList.name), 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(assets.openFd(soundList.name).fileDescriptor,
-                        assets.openFd(soundList.name).startOffset,
-                        assets.openFd(soundList.name).declaredLength)
-                    getmpDuration.prepare()
-                    mpDuration = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -4196,13 +4140,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 2 && buttonB == 2 -> {
                     effect(binding.includeMainView2.imageView,800)
                     sound2 = soundPool.load(assets.openFd(soundList.name), 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(assets.openFd(soundList.name).fileDescriptor,
-                        assets.openFd(soundList.name).startOffset,
-                        assets.openFd(soundList.name).declaredLength)
-                    getmpDuration.prepare()
-                    mpDuration2 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -4217,13 +4154,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 3 && buttonB == 2 -> {
                     effect(binding.includeMainView3.imageView,800)
                     sound3 = soundPool.load(assets.openFd(soundList.name), 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(assets.openFd(soundList.name).fileDescriptor,
-                        assets.openFd(soundList.name).startOffset,
-                        assets.openFd(soundList.name).declaredLength)
-                    getmpDuration.prepare()
-                    mpDuration3 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -4238,13 +4168,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 4 && buttonB == 2 -> {
                     effect(binding.includeMainView4.imageView,800)
                     sound4 = soundPool.load(assets.openFd(soundList.name), 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(assets.openFd(soundList.name).fileDescriptor,
-                        assets.openFd(soundList.name).startOffset,
-                        assets.openFd(soundList.name).declaredLength)
-                    getmpDuration.prepare()
-                    mpDuration4 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -4259,13 +4182,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 5 && buttonB == 2 -> {
                     effect(binding.includeMainView5.imageView,800)
                     sound5 = soundPool.load(assets.openFd(soundList.name), 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(assets.openFd(soundList.name).fileDescriptor,
-                        assets.openFd(soundList.name).startOffset,
-                        assets.openFd(soundList.name).declaredLength)
-                    getmpDuration.prepare()
-                    mpDuration5 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -4280,13 +4196,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 6 && buttonB == 2 -> {
                     effect(binding.includeMainView6.imageView,800)
                     sound6 = soundPool.load(assets.openFd(soundList.name), 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(assets.openFd(soundList.name).fileDescriptor,
-                        assets.openFd(soundList.name).startOffset,
-                        assets.openFd(soundList.name).declaredLength)
-                    getmpDuration.prepare()
-                    mpDuration6 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -4301,13 +4210,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 7 && buttonB == 2 -> {
                     effect(binding.includeMainView7.imageView,800)
                     sound7 = soundPool.load(assets.openFd(soundList.name), 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(assets.openFd(soundList.name).fileDescriptor,
-                        assets.openFd(soundList.name).startOffset,
-                        assets.openFd(soundList.name).declaredLength)
-                    getmpDuration.prepare()
-                    mpDuration7 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -4322,13 +4224,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 8 && buttonB == 2 -> {
                     effect(binding.includeMainView8.imageView,800)
                     sound8 = soundPool.load(assets.openFd(soundList.name), 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(assets.openFd(soundList.name).fileDescriptor,
-                        assets.openFd(soundList.name).startOffset,
-                        assets.openFd(soundList.name).declaredLength)
-                    getmpDuration.prepare()
-                    mpDuration8 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -4343,13 +4238,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 9 && buttonB == 2 -> {
                     effect(binding.includeMainView9.imageView,800)
                     sound9 = soundPool.load(assets.openFd(soundList.name), 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(assets.openFd(soundList.name).fileDescriptor,
-                        assets.openFd(soundList.name).startOffset,
-                        assets.openFd(soundList.name).declaredLength)
-                    getmpDuration.prepare()
-                    mpDuration9 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -4364,13 +4252,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 10 && buttonB == 2 -> {
                     effect(binding.includeMainView10.imageView,800)
                     sound10 = soundPool.load(assets.openFd(soundList.name), 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(assets.openFd(soundList.name).fileDescriptor,
-                        assets.openFd(soundList.name).startOffset,
-                        assets.openFd(soundList.name).declaredLength)
-                    getmpDuration.prepare()
-                    mpDuration10 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -4385,13 +4266,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 11 && buttonB == 2 -> {
                     effect(binding.includeMainView11.imageView,800)
                     sound11 = soundPool.load(assets.openFd(soundList.name), 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(assets.openFd(soundList.name).fileDescriptor,
-                        assets.openFd(soundList.name).startOffset,
-                        assets.openFd(soundList.name).declaredLength)
-                    getmpDuration.prepare()
-                    mpDuration11 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -4406,13 +4280,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 12 && buttonB == 2 -> {
                     effect(binding.includeMainView12.imageView,800)
                     sound12 = soundPool.load(assets.openFd(soundList.name), 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(assets.openFd(soundList.name).fileDescriptor,
-                        assets.openFd(soundList.name).startOffset,
-                        assets.openFd(soundList.name).declaredLength)
-                    getmpDuration.prepare()
-                    mpDuration12 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -4427,13 +4294,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 13 && buttonB == 2 -> {
                     effect(binding.includeMainView13.imageView,800)
                     sound13 = soundPool.load(assets.openFd(soundList.name), 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(assets.openFd(soundList.name).fileDescriptor,
-                        assets.openFd(soundList.name).startOffset,
-                        assets.openFd(soundList.name).declaredLength)
-                    getmpDuration.prepare()
-                    mpDuration13 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -4448,13 +4308,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 14 && buttonB == 2 -> {
                     effect(binding.includeMainView14.imageView,800)
                     sound14 = soundPool.load(assets.openFd(soundList.name), 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(assets.openFd(soundList.name).fileDescriptor,
-                        assets.openFd(soundList.name).startOffset,
-                        assets.openFd(soundList.name).declaredLength)
-                    getmpDuration.prepare()
-                    mpDuration14 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
@@ -4469,13 +4322,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 buttonA == 15 && buttonB == 2 -> {
                     effect(binding.includeMainView15.imageView,800)
                     sound15 = soundPool.load(assets.openFd(soundList.name), 1)
-                    getmpDuration = MediaPlayer()
-                    getmpDuration.setDataSource(assets.openFd(soundList.name).fileDescriptor,
-                        assets.openFd(soundList.name).startOffset,
-                        assets.openFd(soundList.name).declaredLength)
-                    getmpDuration.prepare()
-                    mpDuration15 = getmpDuration.duration
-                    getmpDuration.release()
                     soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
                         soundPool.stop(soundPool.play(sound16, 1.0f, 1.0f, 0, 0, 1.0f))
                     }
