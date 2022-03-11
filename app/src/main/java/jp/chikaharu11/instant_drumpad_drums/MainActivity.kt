@@ -46,21 +46,21 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
     private lateinit var admobmAdView: AdView
 
     private var actionTitle = "bass_100_01".replace("_"," ").uppercase() + " loop"
-    private var padText1 = "cymbal_01".replace("_"," ").uppercase()
-    private var padText2 = "".replace("_"," ").uppercase()
-    private var padText3 = "cymbal_02".replace("_"," ").uppercase()
-    private var padText4 = "open_hat_01".replace("_"," ").uppercase()
-    private var padText5 = "".replace("_"," ").uppercase()
-    private var padText6 = "cymbal_03".replace("_"," ").uppercase()
-    private var padText7 = "closed_hat_01".replace("_"," ").uppercase()
-    private var padText8 = "tom_02".replace("_"," ").uppercase()
-    private var padText9 = "tom_01".replace("_"," ").uppercase()
-    private var padText10 = "snare_01".replace("_"," ").uppercase()
-    private var padText11 = "kick_01".replace("_"," ").uppercase()
-    private var padText12 = "tom_03".replace("_"," ").uppercase()
-    private var padText13 = "".replace("_"," ").uppercase()
-    private var padText14 = "".replace("_"," ").uppercase()
-    private var padText15 = "".replace("_"," ").uppercase()
+    private var padText1 = "cymbal_01"
+    private var padText2 = "open_hat_01"
+    private var padText3 = "closed_hat_01"
+    private var padText4 = "cycdh_crash_01"
+    private var padText5 = "tom_02"
+    private var padText6 = "snare_01"
+    private var padText7 = "cycdh_loosekick_08"
+    private var padText8 = "cycdh_acoukick_01"
+    private var padText9 = "kick_01"
+    private var padText10 = "cycdh_trasha_01"
+    private var padText11 = "tom_01"
+    private var padText12 = "tom_03"
+    private var padText13 = "cymbal_02"
+    private var padText14 = "cymbal_03"
+    private var padText15 = "tom_3"
 
     private var count = 0.5f
     private var bpm = 1.0f
@@ -129,6 +129,7 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
 
     private lateinit var lmp: LoopMediaPlayer
 
+    private lateinit var a0CustomAdapter: CustomAdapter
     private lateinit var aCustomAdapter: CustomAdapter
     private lateinit var bCustomAdapter: CustomAdapter
     private lateinit var cCustomAdapter: CustomAdapter
@@ -141,16 +142,25 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
     private lateinit var jCustomAdapter: CustomAdapter
     private lateinit var kCustomAdapter: CustomAdapter
     private lateinit var lCustomAdapter: CustomAdapter
+    private lateinit var mCustomAdapter: CustomAdapter
+    private lateinit var aaCustomAdapter: CustomAdapter
+    private lateinit var abCustomAdapter: CustomAdapter
+    private lateinit var acCustomAdapter: CustomAdapter
+    private lateinit var adCustomAdapter: CustomAdapter
 
     private lateinit var nCustomAdapter: CustomAdapter
     private lateinit var oCustomAdapter: CustomAdapter
     private lateinit var pCustomAdapter: CustomAdapter
     private lateinit var qCustomAdapter: CustomAdapter
     private lateinit var rCustomAdapter: CustomAdapter
+    private lateinit var baCustomAdapter: CustomAdapter
+    private lateinit var bbCustomAdapter: CustomAdapter
 
     private lateinit var sCustomAdapter: CustomAdapter
     private lateinit var tCustomAdapter: CustomAdapter
+    private lateinit var uCustomAdapter: CustomAdapter
 
+    private lateinit var a0SoundList: MutableList<SoundList>
     private lateinit var aSoundList: MutableList<SoundList>
     private lateinit var bSoundList: MutableList<SoundList>
     private lateinit var cSoundList: MutableList<SoundList>
@@ -163,15 +173,23 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
     private lateinit var jSoundList: MutableList<SoundList>
     private lateinit var kSoundList: MutableList<SoundList>
     private lateinit var lSoundList: MutableList<SoundList>
+    private lateinit var mSoundList: MutableList<SoundList>
+    private lateinit var aaSoundList: MutableList<SoundList>
+    private lateinit var abSoundList: MutableList<SoundList>
+    private lateinit var acSoundList: MutableList<SoundList>
+    private lateinit var adSoundList: MutableList<SoundList>
 
     private lateinit var nSoundList: MutableList<SoundList>
     private lateinit var oSoundList: MutableList<SoundList>
     private lateinit var pSoundList: MutableList<SoundList>
     private lateinit var qSoundList: MutableList<SoundList>
     private lateinit var rSoundList: MutableList<SoundList>
+    private lateinit var baSoundList: MutableList<SoundList>
+    private lateinit var bbSoundList: MutableList<SoundList>
 
     private lateinit var sSoundList: MutableList<SoundList>
     private lateinit var tSoundList: MutableList<SoundList>
+    private lateinit var uSoundList: MutableList<SoundList>
 
     private lateinit var mRealm: Realm
 
@@ -366,88 +384,44 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
             }
         }
 
+        binding.includeMainView.textView.text = padText1.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        binding.includeMainView2.textView.text = padText2.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        binding.includeMainView3.textView.text = padText3.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        binding.includeMainView4.textView.text = padText4.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        binding.includeMainView5.textView.text = padText5.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        binding.includeMainView6.textView.text = padText6.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        binding.includeMainView7.textView.text = padText7.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        binding.includeMainView8.textView.text = padText8.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        binding.includeMainView9.textView.text = padText9.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        binding.includeMainView10.textView.text = padText10.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        binding.includeMainView11.textView.text = padText11.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        binding.includeMainView12.textView.text = padText12.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        binding.includeMainView13.textView.text = padText13.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        binding.includeMainView14.textView.text = padText14.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        binding.includeMainView15.textView.text = padText15.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        findViewById<View>(R.id.include_view).findViewById<TextView>(R.id.padText).text = soundPoolVolume.toString().replace("f", "") + "            " + soundPoolTempo.toString().replace("f", "") + "\n" + padText1.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        findViewById<View>(R.id.include_view2).findViewById<TextView>(R.id.padText).text = soundPoolVolume2.toString().replace("f", "") + "            " + soundPoolTempo2.toString().replace("f", "") + "\n" + padText2.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        findViewById<View>(R.id.include_view3).findViewById<TextView>(R.id.padText).text = soundPoolVolume3.toString().replace("f", "") + "            " + soundPoolTempo3.toString().replace("f", "") + "\n" + padText3.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        findViewById<View>(R.id.include_view4).findViewById<TextView>(R.id.padText).text = soundPoolVolume4.toString().replace("f", "") + "            " + soundPoolTempo4.toString().replace("f", "") + "\n" + padText4.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        findViewById<View>(R.id.include_view5).findViewById<TextView>(R.id.padText).text = soundPoolVolume5.toString().replace("f", "") + "            " + soundPoolTempo5.toString().replace("f", "") + "\n" + padText5.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        findViewById<View>(R.id.include_view6).findViewById<TextView>(R.id.padText).text = soundPoolVolume6.toString().replace("f", "") + "            " + soundPoolTempo6.toString().replace("f", "") + "\n" + padText6.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        findViewById<View>(R.id.include_view7).findViewById<TextView>(R.id.padText).text = soundPoolVolume7.toString().replace("f", "") + "            " + soundPoolTempo7.toString().replace("f", "") + "\n" + padText7.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        findViewById<View>(R.id.include_view8).findViewById<TextView>(R.id.padText).text = soundPoolVolume8.toString().replace("f", "") + "            " + soundPoolTempo8.toString().replace("f", "") + "\n" + padText8.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        findViewById<View>(R.id.include_view9).findViewById<TextView>(R.id.padText).text = soundPoolVolume9.toString().replace("f", "") + "            " + soundPoolTempo9.toString().replace("f", "") + "\n" + padText9.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        findViewById<View>(R.id.include_view10).findViewById<TextView>(R.id.padText).text = soundPoolVolume10.toString().replace("f", "") + "            " + soundPoolTempo10.toString().replace("f", "") + "\n" + padText10.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        findViewById<View>(R.id.include_view11).findViewById<TextView>(R.id.padText).text = soundPoolVolume11.toString().replace("f", "") + "            " + soundPoolTempo11.toString().replace("f", "") + "\n" + padText11.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        findViewById<View>(R.id.include_view12).findViewById<TextView>(R.id.padText).text = soundPoolVolume12.toString().replace("f", "") + "            " + soundPoolTempo12.toString().replace("f", "") + "\n" + padText12.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        findViewById<View>(R.id.include_view13).findViewById<TextView>(R.id.padText).text = soundPoolVolume13.toString().replace("f", "") + "            " + soundPoolTempo13.toString().replace("f", "") + "\n" + padText13.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        findViewById<View>(R.id.include_view14).findViewById<TextView>(R.id.padText).text = soundPoolVolume14.toString().replace("f", "") + "            " + soundPoolTempo14.toString().replace("f", "") + "\n" + padText14.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+        findViewById<View>(R.id.include_view15).findViewById<TextView>(R.id.padText).text = soundPoolVolume15.toString().replace("f", "") + "            " + soundPoolTempo15.toString().replace("f", "") + "\n" + padText15.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
+
         val orientation = resources.configuration.orientation
         when (orientation) {
             Configuration.ORIENTATION_PORTRAIT -> {
-                findViewById<View>(R.id.include_main_view).findViewById<TextView>(R.id.textView).text = "cymbal_01".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_main_view2).findViewById<TextView>(R.id.textView).text = "".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_main_view3).findViewById<TextView>(R.id.textView).text = "cymbal_02".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_main_view4).findViewById<TextView>(R.id.textView).text = "open_hat_01".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_main_view5).findViewById<TextView>(R.id.textView).text = "".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_main_view6).findViewById<TextView>(R.id.textView).text = "cymbal_03".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_main_view7).findViewById<TextView>(R.id.textView).text = "closed_hat_01".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_main_view8).findViewById<TextView>(R.id.textView).text = "tom_02".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_main_view9).findViewById<TextView>(R.id.textView).text = "tom_01".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_main_view10).findViewById<TextView>(R.id.textView).text = "snare_01".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_main_view11).findViewById<TextView>(R.id.textView).text = "kick_01".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_main_view12).findViewById<TextView>(R.id.textView).text = "tom_03".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_main_view13).findViewById<TextView>(R.id.textView).text = "".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_main_view14).findViewById<TextView>(R.id.textView).text = "".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_main_view15).findViewById<TextView>(R.id.textView).text = "".replace("_"," ").uppercase()
-                findViewById<TextView>(R.id.padText0).text = actionTitle
-                findViewById<View>(R.id.include_view).findViewById<TextView>(R.id.padText).text = "cymbal_01".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view2).findViewById<TextView>(R.id.padText).text = "".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view3).findViewById<TextView>(R.id.padText).text = "cymbal_02".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view4).findViewById<TextView>(R.id.padText).text = "open_hat_01".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view5).findViewById<TextView>(R.id.padText).text = "".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view6).findViewById<TextView>(R.id.padText).text = "cymbal_03".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view7).findViewById<TextView>(R.id.padText).text = "tom_02".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view8).findViewById<TextView>(R.id.padText).text = "tom_01".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view9).findViewById<TextView>(R.id.padText).text = "mid_tom_01".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view10).findViewById<TextView>(R.id.padText).text = "snare_01".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view11).findViewById<TextView>(R.id.padText).text = "kick_01".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view12).findViewById<TextView>(R.id.padText).text = "tom_03".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view13).findViewById<TextView>(R.id.padText).text = "".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view14).findViewById<TextView>(R.id.padText).text = "".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view15).findViewById<TextView>(R.id.padText).text = "".replace("_"," ").uppercase()
+                findViewById<TextView>(R.id.padText0).text = "${actionTitle.uppercase()} loop"
             }
             Configuration.ORIENTATION_LANDSCAPE -> {
-                padText1 = "cymbal_01".replace("_"," ").uppercase()
-                padText2 = "open_hat_01".replace("_"," ").uppercase()
-                padText3 = "closed_hat_01".replace("_"," ").uppercase()
-                padText4 = "".replace("_"," ").uppercase()
-                padText5 = "tom_02".replace("_"," ").uppercase()
-                padText6 = "snare_01".replace("_"," ").uppercase()
-                padText7 = "".replace("_"," ").uppercase()
-                padText8 = "".replace("_"," ").uppercase()
-                padText9 = "kick_01".replace("_"," ").uppercase()
-                padText10 = "".replace("_"," ").uppercase()
-                padText11 = "tom_01".replace("_"," ").uppercase()
-                padText12 = "tom_03".replace("_"," ").uppercase()
-                padText13 = "cymbal_02".replace("_"," ").uppercase()
-                padText14 = "cymbal_03".replace("_"," ").uppercase()
-                padText15 = "".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view).findViewById<TextView>(R.id.textView).text= "cymbal_01".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view2).findViewById<TextView>(R.id.textView).text= "open_hat_01".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view3).findViewById<TextView>(R.id.textView).text= "closed_hat_01".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view4).findViewById<TextView>(R.id.textView).text= "".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view5).findViewById<TextView>(R.id.textView).text= "tom_02".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view6).findViewById<TextView>(R.id.textView).text= "snare_01".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view7).findViewById<TextView>(R.id.textView).text= "".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view8).findViewById<TextView>(R.id.textView).text= "".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view9).findViewById<TextView>(R.id.textView).text= "kick_01".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view10).findViewById<TextView>(R.id.textView).text= "".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view11).findViewById<TextView>(R.id.textView).text= "tom_01".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view12).findViewById<TextView>(R.id.textView).text= "tom_03".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view13).findViewById<TextView>(R.id.textView).text= "cymbal_02".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view14).findViewById<TextView>(R.id.textView).text= "cymbal_03".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view15).findViewById<TextView>(R.id.textView).text= "".replace("_"," ").uppercase()
                 findViewById<TextView>(R.id.padText0).text = "loop"
-                findViewById<View>(R.id.include_view).findViewById<TextView>(R.id.padText).text = "cymbal_01".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view2).findViewById<TextView>(R.id.padText).text = "open_hat_01".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view3).findViewById<TextView>(R.id.padText).text = "closed_hat_01".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view4).findViewById<TextView>(R.id.padText).text = "".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view5).findViewById<TextView>(R.id.padText).text = "tom_02".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view6).findViewById<TextView>(R.id.padText).text = "snare_01".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view7).findViewById<TextView>(R.id.padText).text = "".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view8).findViewById<TextView>(R.id.padText).text = "".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view9).findViewById<TextView>(R.id.padText).text = "kick_01".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view10).findViewById<TextView>(R.id.padText).text = "".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view11).findViewById<TextView>(R.id.padText).text = "tom_01".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view12).findViewById<TextView>(R.id.padText).text = "tom_03".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view13).findViewById<TextView>(R.id.padText).text = "cymbal_02".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view14).findViewById<TextView>(R.id.padText).text = "cymbal_03".replace("_"," ").uppercase()
-                findViewById<View>(R.id.include_view15).findViewById<TextView>(R.id.padText).text = "".replace("_"," ").uppercase()
             }
             Configuration.ORIENTATION_SQUARE -> {
                 TODO()
@@ -818,14 +792,26 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
 
         val choose = if (locale == Locale.JAPAN) {
             arrayOf(
-                "Metronome Loops",
-                "Sample Loops",
-                "External sound Loops"
+                "Metronome loops",
+                "Bass loops",
+                "Drums loops",
+                "Guitar loops",
+                "Keys loops",
+                "Orch loops",
+                "Percussion loops",
+                "Synth loops",
+                "External sound loops"
             ) } else {
             arrayOf(
-                "Metronome Loops",
-                "Sample Loops",
-                "External sound Loops"
+                "Metronome loops",
+                "Bass loops",
+                "Drums loops",
+                "Guitar loops",
+                "Keys loops",
+                "Orch loops",
+                "Percussion loops",
+                "Synth loops",
+                "External sound loops"
             )
         }
         val adapter2 = ArrayAdapter(this, R.layout.custom_spinner_dropdown, choose)
@@ -835,7 +821,19 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
 
         gridView2.setOnItemClickListener { adapterView, _, position, _ ->
             when (adapterView.getItemAtPosition(position)) {
-                "Metronome Loops" -> {
+                "Metronome loops" -> {
+                    lmp.stop()
+                    menuSwitch = true
+                    invalidateOptionsMenu()
+                    switch1 = 2
+                    buttonA = 16
+                    buttonB = 2
+                    soundListView.adapter = uCustomAdapter
+                    uCustomAdapter.notifyDataSetChanged()
+                    soundListView.visibility = View.VISIBLE
+                    gridView2.visibility = View.INVISIBLE
+                }
+                "Bass loops" -> {
                     lmp.stop()
                     menuSwitch = true
                     invalidateOptionsMenu()
@@ -847,7 +845,7 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                     soundListView.visibility = View.VISIBLE
                     gridView2.visibility = View.INVISIBLE
                 }
-                "Sample Loops" -> {
+                "Drums loops" -> {
                     lmp.stop()
                     menuSwitch = true
                     invalidateOptionsMenu()
@@ -859,8 +857,68 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                     soundListView.visibility = View.VISIBLE
                     gridView2.visibility = View.INVISIBLE
                 }
+                "Guitar loops" -> {
+                    lmp.stop()
+                    menuSwitch = true
+                    invalidateOptionsMenu()
+                    switch1 = 2
+                    buttonA = 16
+                    buttonB = 2
+                    soundListView.adapter = pCustomAdapter
+                    pCustomAdapter.notifyDataSetChanged()
+                    soundListView.visibility = View.VISIBLE
+                    gridView2.visibility = View.INVISIBLE
+                }
+                "Keys loops" -> {
+                    lmp.stop()
+                    menuSwitch = true
+                    invalidateOptionsMenu()
+                    switch1 = 2
+                    buttonA = 16
+                    buttonB = 2
+                    soundListView.adapter = qCustomAdapter
+                    qCustomAdapter.notifyDataSetChanged()
+                    soundListView.visibility = View.VISIBLE
+                    gridView2.visibility = View.INVISIBLE
+                }
+                "Orch loops" -> {
+                    lmp.stop()
+                    menuSwitch = true
+                    invalidateOptionsMenu()
+                    switch1 = 2
+                    buttonA = 16
+                    buttonB = 2
+                    soundListView.adapter = rCustomAdapter
+                    rCustomAdapter.notifyDataSetChanged()
+                    soundListView.visibility = View.VISIBLE
+                    gridView2.visibility = View.INVISIBLE
+                }
+                "Percussion loops" -> {
+                    lmp.stop()
+                    menuSwitch = true
+                    invalidateOptionsMenu()
+                    switch1 = 2
+                    buttonA = 16
+                    buttonB = 2
+                    soundListView.adapter = baCustomAdapter
+                    baCustomAdapter.notifyDataSetChanged()
+                    soundListView.visibility = View.VISIBLE
+                    gridView2.visibility = View.INVISIBLE
+                }
+                "Synth loops" -> {
+                    lmp.stop()
+                    menuSwitch = true
+                    invalidateOptionsMenu()
+                    switch1 = 2
+                    buttonA = 16
+                    buttonB = 2
+                    soundListView.adapter = bbCustomAdapter
+                    bbCustomAdapter.notifyDataSetChanged()
+                    soundListView.visibility = View.VISIBLE
+                    gridView2.visibility = View.INVISIBLE
+                }
 
-                "External sound Loops" -> {
+                "External sound loops" -> {
                     lmp.stop()
                     menuSwitch = true
                     invalidateOptionsMenu()
@@ -877,487 +935,825 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
         }
 
 
+        a0SoundList = arrayListOf(
+            SoundList("cymbal_01.ogg"),
+            SoundList("cymbal_02.ogg"),
+            SoundList("cymbal_03.ogg"),
+            SoundList("open_hat_01.ogg"),
+            SoundList("open_hat_02.ogg"),
+            SoundList("open_hat_03.ogg"),
+            SoundList("closed_hat_01.ogg"),
+            SoundList("closed_hat_02.ogg"),
+            SoundList("closed_hat_03.ogg"),
+            SoundList("closed_hat_04.ogg"),
+            SoundList("closed_hat_05.ogg"),
+            SoundList("kick_01.ogg"),
+            SoundList("kick_02.ogg"),
+            SoundList("kick_03.ogg"),
+            SoundList("kick_04.ogg"),
+            SoundList("snare_01.ogg"),
+            SoundList("snare_02.ogg"),
+            SoundList("snare_03.ogg"),
+            SoundList("snare_04.ogg"),
+            SoundList("tom_01.ogg"),
+            SoundList("tom_02.ogg"),
+            SoundList("tom_03.ogg")
+        )
+
         aSoundList = arrayListOf(
-                SoundList("bass_drum_long_01.ogg"),
-                SoundList("bass_drum_long_02.ogg"),
-                SoundList("bass_drum_long_03.ogg"),
-                SoundList("bass_drum_long_04.ogg"),
-                SoundList("bass_drum_long_05.ogg"),
-                SoundList("bass_drum_long_06.ogg"),
-                SoundList("bass_drum_long_07.ogg"),
-                SoundList("bass_drum_long_08.ogg"),
-                SoundList("bass_drum_long_09.ogg"),
-                SoundList("bass_drum_long_10.ogg"),
-                SoundList("bass_drum_long_11.ogg"),
-                SoundList("bass_drum_long_12.ogg"),
-                SoundList("bass_drum_long_13.ogg"),
-                SoundList("bass_drum_long_14.ogg"),
-                SoundList("bass_drum_long_15.ogg"),
-                SoundList("bass_drum_long_16.ogg"),
-                SoundList("bass_drum_long_17.ogg"),
-                SoundList("bass_drum_short_01.ogg"),
-                SoundList("bass_drum_short_02.ogg"),
-                SoundList("bass_drum_short_03.ogg"),
-                SoundList("bass_drum_short_04.ogg"),
-                SoundList("bass_drum_short_05.ogg"),
-                SoundList("bass_drum_short_06.ogg"),
-                SoundList("bass_drum_short_07.ogg"),
-                SoundList("bass_drum_short_08.ogg"),
-                SoundList("bass_drum_short_09.ogg"),
-                SoundList("bass_drum_short_10.ogg"),
-                SoundList("bass_drum_short_11.ogg"),
-                SoundList("bass_drum_short_12.ogg"),
-            SoundList("tr_909_bass_drum_01.ogg"),
-            SoundList("tr_909_bass_drum_02.ogg"),
-            SoundList("tr_909_bass_drum_03.ogg"),
-            SoundList("tr_8_bass_drum_01.ogg"),
-            SoundList("tr_8_bass_drum_02.ogg"),
-            SoundList("tr_8_bass_drum_03.ogg"),
-            SoundList("tr_8_bass_drum_04.ogg")
-                )
+            SoundList("cycdh_crash_01.ogg"),
+            SoundList("cycdh_crash_02.ogg"),
+            SoundList("cycdh_crash_03.ogg"),
+            SoundList("cycdh_multicrash_01.ogg"),
+            SoundList("cycdh_multicrash_02.ogg"),
+            SoundList("cycdh_multicrash_03.ogg"),
+            SoundList("cycdh_multicrashhi_01.ogg"),
+            SoundList("cycdh_multicrashhi_02.ogg"),
+            SoundList("cycdh_multicrashhi_03.ogg"),
+            SoundList("cycdh_multicrashlo_01.ogg"),
+            SoundList("cycdh_multicrashlo_02.ogg"),
+            SoundList("cycdh_multicrashlo_03.ogg")
+        )
 
         bSoundList = arrayListOf(
-                SoundList("clap_01.ogg"),
-                SoundList("clap_02.ogg"),
-                SoundList("clap_03.ogg"),
-                SoundList("clap_04.ogg"),
-                SoundList("clap_05.ogg"),
-                SoundList("clap_06.ogg"),
-                SoundList("clap_07.ogg"),
-                SoundList("clap_08.ogg"),
-                SoundList("clap_09.ogg"),
-                SoundList("clap_10.ogg"),
-                SoundList("clap_11.ogg"),
-                SoundList("clap_12.ogg"),
-                SoundList("clap_13.ogg"),
-                SoundList("clap_14.ogg"),
-                SoundList("clap_15.ogg"),
-            SoundList("tr_909_clap.ogg"),
-            SoundList("tr_8_clap_01.ogg"),
-            SoundList("tr_8_clap_02.ogg"),
-            SoundList("tr_8_clap_03.ogg")
+            SoundList("cycdh_trasha_01.ogg"),
+            SoundList("cycdh_trasha_02.ogg"),
+            SoundList("cycdh_trasha_03.ogg"),
+            SoundList("cycdh_trasha_04.ogg"),
+            SoundList("cycdh_trasha_05.ogg"),
+            SoundList("cycdh_trasha_06.ogg"),
+            SoundList("cycdh_trasha_07.ogg"),
+            SoundList("cycdh_trasha_08.ogg"),
+            SoundList("cycdh_trasha_09.ogg"),
+            SoundList("cycdh_trashb_01.ogg"),
+            SoundList("cycdh_trashb_02.ogg"),
+            SoundList("cycdh_trashb_03.ogg"),
+            SoundList("cycdh_trashc_01.ogg"),
+            SoundList("cycdh_trashc_02.ogg"),
+            SoundList("cycdh_trashc_03.ogg"),
+            SoundList("cycdh_trashc_04.ogg"),
+            SoundList("cycdh_trashd_01.ogg"),
+            SoundList("cycdh_trashd_02.ogg"),
+            SoundList("cycdh_trashe_01.ogg"),
+            SoundList("cycdh_trashe_02.ogg"),
+            SoundList("cycdh_trashe_03.ogg"),
+            SoundList("cycdh_trashe_04.ogg"),
+            SoundList("cycdh_trashe_05.ogg"),
+            SoundList("cycdh_trashf_01.ogg"),
+            SoundList("cycdh_trashf_02.ogg"),
+            SoundList("cycdh_trashf_03.ogg"),
+            SoundList("cycdh_trashf_04.ogg")
         )
         cSoundList = arrayListOf(
-                SoundList("claves_01.ogg"),
-                SoundList("claves_02.ogg"),
-                SoundList("claves_03.ogg"),
-                SoundList("claves_04.ogg"),
-                SoundList("claves_05.ogg"),
-                SoundList("claves_06.ogg"),
-                SoundList("claves_07.ogg"),
-                SoundList("claves_08.ogg"),
-                SoundList("claves_09.ogg"),
-                SoundList("claves_10.ogg"),
-                SoundList("claves_11.ogg")
+            SoundList("acoustic_hat_01.ogg"),
+            SoundList("acoustic_hat_02.ogg"),
+            SoundList("acoustic_hat_03.ogg"),
+            SoundList("acoustic_hat_04.ogg"),
+            SoundList("acoustic_hat_05.ogg"),
+            SoundList("acoustic_hat_06.ogg")
         )
         dSoundList = arrayListOf(
-                SoundList("clsd_hi_hat_01.ogg"),
-                SoundList("clsd_hi_hat_02.ogg"),
-                SoundList("clsd_hi_hat_03.ogg"),
-                SoundList("clsd_hi_hat_04.ogg"),
-                SoundList("clsd_hi_hat_05.ogg"),
-                SoundList("clsd_hi_hat_06.ogg"),
-                SoundList("clsd_hi_hat_07.ogg"),
-                SoundList("clsd_hi_hat_08.ogg"),
-                SoundList("clsd_hi_hat_09.ogg"),
-                SoundList("clsd_hi_hat_10.ogg"),
-                SoundList("clsd_hi_hat_11.ogg"),
-                SoundList("clsd_hi_hat_12.ogg"),
-            SoundList("tr_909_clsd_hi_hat_01.ogg"),
-            SoundList("tr_909_clsd_hi_hat_02.ogg"),
-            SoundList("tr_8_clsd_hi_hat_01.ogg"),
-            SoundList("tr_8_clsd_hi_hat_02.ogg"),
-            SoundList("tr_8_clsd_hi_hat_03.ogg")
+            SoundList("cycdh_sab_clhat_01.ogg"),
+            SoundList("cycdh_sab_clhat_02.ogg"),
+            SoundList("cycdh_sab_clhat_03.ogg"),
+            SoundList("cycdh_sab_clhat_04.ogg"),
+            SoundList("cycdh_sab_clhat_05.ogg"),
+            SoundList("cycdh_sab_clhat_06.ogg"),
+            SoundList("cycdh_sab_clhat_07.ogg"),
+            SoundList("cycdh_sab_clhat_08.ogg"),
+            SoundList("cycdh_sab_clhat_09.ogg"),
+            SoundList("cycdh_sab_clhat_10.ogg"),
+            SoundList("cycdh_sab_clhat_11.ogg"),
+            SoundList("cycdh_sab_clhat_12.ogg"),
+            SoundList("cycdh_sab_clhat_13.ogg"),
+            SoundList("cycdh_sab_clhat_14.ogg"),
+            SoundList("cycdh_sab_hfhat_01.ogg"),
+            SoundList("cycdh_sab_hfhat_02.ogg"),
+            SoundList("cycdh_sab_hfhat_03.ogg"),
+            SoundList("cycdh_sab_hfhat_04.ogg"),
+            SoundList("cycdh_sab_ophat_01.ogg"),
+            SoundList("cycdh_sab_ophat_02.ogg"),
+            SoundList("cycdh_sab_ophat_03.ogg"),
+            SoundList("cycdh_sab_ophat_04.ogg"),
+            SoundList("cycdh_sab_ophat_05.ogg"),
+            SoundList("cycdh_sab_ophat_06.ogg"),
+            SoundList("cycdh_sab_ophat_07.ogg"),
+            SoundList("cycdh_sab_ophat_08.ogg"),
+            SoundList("cycdh_sab_ophat_09.ogg"),
+            SoundList("cycdh_sab_pdhat_01.ogg"),
+            SoundList("cycdh_sab_pdhat_02.ogg")
         )
         eSoundList = arrayListOf(
-                SoundList("high_conga_01.ogg"),
-                SoundList("high_conga_02.ogg"),
-                SoundList("high_conga_03.ogg"),
-                SoundList("high_conga_04.ogg"),
-                SoundList("high_conga_05.ogg"),
-                SoundList("high_conga_06.ogg"),
-                SoundList("high_conga_07.ogg"),
-                SoundList("high_conga_08.ogg"),
-                SoundList("high_conga_09.ogg"),
-                SoundList("high_conga_10.ogg"),
-                SoundList("mid_conga_01.ogg"),
-                SoundList("mid_conga_02.ogg"),
-                SoundList("mid_conga_03.ogg"),
-                SoundList("mid_conga_04.ogg"),
-                SoundList("mid_conga_05.ogg"),
-                SoundList("mid_conga_06.ogg"),
-                SoundList("mid_conga_07.ogg"),
-                SoundList("mid_conga_08.ogg"),
-                SoundList("mid_conga_09.ogg"),
-                SoundList("mid_conga_10.ogg"),
-                SoundList("low_conga_01.ogg"),
-                SoundList("low_conga_02.ogg"),
-                SoundList("low_conga_03.ogg"),
-                SoundList("low_conga_04.ogg"),
-                SoundList("low_conga_05.ogg"),
-                SoundList("low_conga_06.ogg"),
-                SoundList("low_conga_07.ogg"),
-                SoundList("low_conga_08.ogg"),
-                SoundList("low_conga_09.ogg"),
-                SoundList("low_conga_10.ogg")
+            SoundList("khats_clsd_01.ogg"),
+            SoundList("khats_clsd_02.ogg"),
+            SoundList("khats_clsd_03.ogg"),
+            SoundList("khats_clsd_04.ogg"),
+            SoundList("khats_clsd_05.ogg"),
+            SoundList("khats_clsd_06.ogg"),
+            SoundList("khats_clsd_07.ogg"),
+            SoundList("khats_clsd_08.ogg"),
+            SoundList("khats_clsd_09.ogg"),
+            SoundList("khats_clsd_10.ogg"),
+            SoundList("khats_clsd_11.ogg"),
+            SoundList("khats_hlfop_01.ogg"),
+            SoundList("khats_hlfop_02.ogg"),
+            SoundList("khats_hlfop_03.ogg"),
+            SoundList("khats_open_01.ogg"),
+            SoundList("khats_open_02.ogg"),
+            SoundList("khats_open_03.ogg"),
+            SoundList("khats_open_04.ogg"),
+            SoundList("khats_open_05.ogg"),
+            SoundList("khats_open_06.ogg"),
+            SoundList("khats_open_07.ogg"),
+            SoundList("khats_open_08.ogg"),
+            SoundList("khats_open_09.ogg"),
+            SoundList("khats_pdl_01.ogg"),
+            SoundList("khats_pdl_02.ogg"),
+            SoundList("khats_pdl_03.ogg"),
+            SoundList("khats_pdl_04.ogg")
         )
         fSoundList = arrayListOf(
-                SoundList("cowbell_01a.ogg"),
-                SoundList("cowbell_01b.ogg"),
-                SoundList("cowbell_02.ogg"),
-                SoundList("cowbell_03.ogg"),
-                SoundList("cowbell_04.ogg"),
-                SoundList("cowbell_05.ogg"),
-                SoundList("cowbell_06.ogg"),
-                SoundList("cowbell_07.ogg"),
-                SoundList("cowbell_08.ogg"),
-                SoundList("cowbell_09.ogg"),
-                SoundList("cowbell_10.ogg"),
-                SoundList("cowbell_11.ogg"),
-                SoundList("cowbell_12.ogg"),
-                SoundList("cowbell_13.ogg"),
-                SoundList("cowbell_14.ogg"),
-                SoundList("cowbell_15.ogg"),
-            SoundList("tr_8_cowbell.ogg")
+            SoundList("cycdh_acoukick_01.ogg"),
+            SoundList("cycdh_acoukick_02.ogg"),
+            SoundList("cycdh_acoukick_03.ogg"),
+            SoundList("cycdh_acoukick_04.ogg"),
+            SoundList("cycdh_acoukick_05.ogg"),
+            SoundList("cycdh_acoukick_06.ogg"),
+            SoundList("cycdh_acoukick_07.ogg"),
+            SoundList("cycdh_acoukick_08.ogg"),
+            SoundList("cycdh_acoukick_09.ogg"),
+            SoundList("cycdh_acoukick_10.ogg"),
+            SoundList("cycdh_acoukick_11.ogg"),
+            SoundList("cycdh_acoukick_12.ogg"),
+            SoundList("cycdh_acoukick_13.ogg"),
+            SoundList("cycdh_acoukick_14.ogg"),
+            SoundList("cycdh_acoukick_15.ogg"),
+            SoundList("cycdh_acoukick_16.ogg"),
+            SoundList("cycdh_acoukick_17.ogg"),
+            SoundList("cycdh_acoukick_18.ogg"),
+            SoundList("cycdh_acoukick_19.ogg"),
+            SoundList("cycdh_acoukick_20.ogg")
         )
         gSoundList = arrayListOf(
-                SoundList("cymbal_01.ogg"),
-                SoundList("cymbal_02.ogg"),
-                SoundList("cymbal_03.ogg"),
-                SoundList("cymbal_04.ogg"),
-                SoundList("cymbal_05.ogg"),
-                SoundList("cymbal_06.ogg"),
-                SoundList("cymbal_07.ogg"),
-                SoundList("cymbal_08.ogg"),
-                SoundList("cymbal_09.ogg"),
-                SoundList("cymbal_10.ogg"),
-                SoundList("cymbal_11.ogg"),
-                SoundList("cymbal_12.ogg"),
-                SoundList("cymbal_13.ogg"),
-                SoundList("cymbal_14.ogg"),
-                SoundList("cymbal_15.ogg"),
-                SoundList("cymbal_16.ogg"),
-            SoundList("tr_909_cymbal_01.ogg"),
-            SoundList("tr_909_cymbal_02.ogg"),
-            SoundList("tr_909_cymbal_03.ogg"),
-            SoundList("tr_909_cymbal_04.ogg"),
-            SoundList("tr_8_cymbal_01.ogg"),
-            SoundList("tr_8_cymbal_02.ogg"),
-            SoundList("tr_8_cymbal_03.ogg"),
-            SoundList("tr_8_cymbal_04.ogg")
+            SoundList("cycdh_keskick_01.ogg"),
+            SoundList("cycdh_keskick_02.ogg"),
+            SoundList("cycdh_keskick_03.ogg"),
+            SoundList("cycdh_keskick_04.ogg"),
+            SoundList("cycdh_keskick_05.ogg"),
+            SoundList("cycdh_keskick_06.ogg"),
+            SoundList("cycdh_keskick_07.ogg"),
+            SoundList("cycdh_keskick_08.ogg")
         )
         hSoundList = arrayListOf(
-                SoundList("maracas_01.ogg"),
-                SoundList("maracas_02.ogg"),
-                SoundList("maracas_03.ogg"),
-                SoundList("maracas_04.ogg"),
-                SoundList("maracas_05.ogg"),
-                SoundList("maracas_06.ogg"),
-                SoundList("maracas_07.ogg"),
-                SoundList("maracas_08.ogg"),
-                SoundList("maracas_09.ogg"),
-                SoundList("maracas_10.ogg"),
-                SoundList("maracas_11.ogg")
+            SoundList("cycdh_loosekick_01.ogg"),
+            SoundList("cycdh_loosekick_02.ogg"),
+            SoundList("cycdh_loosekick_03.ogg"),
+            SoundList("cycdh_loosekick_04.ogg"),
+            SoundList("cycdh_loosekick_05.ogg"),
+            SoundList("cycdh_loosekick_06.ogg"),
+            SoundList("cycdh_loosekick_07.ogg"),
+            SoundList("cycdh_loosekick_08.ogg")
         )
         iSoundList = arrayListOf(
-                SoundList("open_hi_hat_01.ogg"),
-                SoundList("open_hi_hat_02.ogg"),
-                SoundList("open_hi_hat_03.ogg"),
-                SoundList("open_hi_hat_04.ogg"),
-                SoundList("open_hi_hat_05.ogg"),
-                SoundList("open_hi_hat_06.ogg"),
-                SoundList("open_hi_hat_07.ogg"),
-                SoundList("open_hi_hat_08.ogg"),
-                SoundList("open_hi_hat_09.ogg"),
-                SoundList("open_hi_hat_10.ogg"),
-                SoundList("open_hi_hat_11.ogg"),
-                SoundList("open_hi_hat_12.ogg"),
-                SoundList("open_hi_hat_13.ogg"),
-            SoundList("tr_909_open_hi_hat_01.ogg"),
-            SoundList("tr_909_open_hi_hat_02.ogg"),
-            SoundList("tr_8_open_hi_hat_01.ogg"),
-            SoundList("tr_8_open_hi_hat_02.ogg"),
-            SoundList("tr_8_open_hi_hat_03.ogg")
+            SoundList("acoustic_snare_01.ogg"),
+            SoundList("acoustic_snare_02.ogg"),
+            SoundList("acoustic_snare_03.ogg"),
+            SoundList("acoustic_snare_04.ogg")
         )
         jSoundList = arrayListOf(
-                SoundList("rimshot_01.ogg"),
-                SoundList("rimshot_02.ogg"),
-                SoundList("rimshot_03.ogg"),
-                SoundList("rimshot_04.ogg"),
-                SoundList("rimshot_05.ogg"),
-                SoundList("rimshot_06.ogg"),
-                SoundList("rimshot_07.ogg"),
-                SoundList("rimshot_08.ogg"),
-                SoundList("rimshot_09.ogg"),
-                SoundList("rimshot_10.ogg"),
-                SoundList("rimshot_11.ogg"),
-            SoundList("tr_909_rimshot.ogg"),
-            SoundList("tr_8_rimshot_01.ogg"),
-            SoundList("tr_8_rimshot_02.ogg"),
-            SoundList("tr_8_rimshot_03.ogg")
+            SoundList("cycdh_ludflama_01.ogg"),
+            SoundList("cycdh_ludflama_02.ogg"),
+            SoundList("cycdh_ludflama_03.ogg"),
+            SoundList("cycdh_ludflama_04.ogg"),
+            SoundList("cycdh_ludflama_05.ogg"),
+            SoundList("cycdh_ludrima_01.ogg"),
+            SoundList("cycdh_ludrima_02.ogg"),
+            SoundList("cycdh_ludrima_03.ogg"),
+            SoundList("cycdh_ludrima_04.ogg"),
+            SoundList("cycdh_ludrima_05.ogg"),
+            SoundList("cycdh_ludrima_06.ogg"),
+            SoundList("cycdh_ludrima_07.ogg"),
+            SoundList("cycdh_ludsdsta_01.ogg"),
+            SoundList("cycdh_ludsdsta_02.ogg"),
+            SoundList("cycdh_ludsdsta_03.ogg"),
+            SoundList("cycdh_ludsdsta_04.ogg"),
+            SoundList("cycdh_ludsdsta_05.ogg"),
+            SoundList("cycdh_ludsdsta_06.ogg"),
+            SoundList("cycdh_ludsdsta_07.ogg"),
+            SoundList("cycdh_ludsnra_01.ogg"),
+            SoundList("cycdh_ludsnra_02.ogg"),
+            SoundList("cycdh_ludsnra_03.ogg"),
+            SoundList("cycdh_ludsnra_04.ogg"),
+            SoundList("cycdh_ludsnra_05.ogg"),
+            SoundList("cycdh_ludsnroffa_01.ogg"),
+            SoundList("cycdh_ludsnroffa_02.ogg"),
+            SoundList("cycdh_ludsnroffa_03.ogg"),
+            SoundList("cycdh_ludsnroffa_04.ogg"),
+            SoundList("cycdh_ludsnroffa_05.ogg"),
+            SoundList("cycdh_ludsnroffa_06.ogg"),
+            SoundList("cycdh_ludsnroffa_07.ogg"),
+            SoundList("cycdh_ludsnroffa_08.ogg")
         )
         kSoundList = arrayListOf(
-                SoundList("snare_drum_01.ogg"),
-                SoundList("snare_drum_02.ogg"),
-                SoundList("snare_drum_03.ogg"),
-                SoundList("snare_drum_04.ogg"),
-                SoundList("snare_drum_05.ogg"),
-                SoundList("snare_drum_06.ogg"),
-                SoundList("snare_drum_07.ogg"),
-                SoundList("snare_drum_08.ogg"),
-                SoundList("snare_drum_09.ogg"),
-                SoundList("snare_drum_10.ogg"),
-                SoundList("snare_drum_11.ogg"),
-                SoundList("snare_drum_12.ogg"),
-                SoundList("snare_drum_13.ogg"),
-                SoundList("snare_drum_14.ogg"),
-                SoundList("snare_drum_15.ogg"),
-                SoundList("snare_drum_16.ogg"),
-                SoundList("snare_drum_17.ogg"),
-                SoundList("snare_drum_18.ogg"),
-                SoundList("snare_drum_19.ogg"),
-                SoundList("snare_drum_20.ogg"),
-            SoundList("tr_909_snare_drum_01.ogg"),
-            SoundList("tr_909_snare_drum_02.ogg"),
-            SoundList("tr_909_snare_drum_03.ogg"),
-            SoundList("tr_8_snare_drum_01.ogg"),
-            SoundList("tr_8_snare_drum_02.ogg"),
-            SoundList("tr_8_snare_drum_03.ogg"),
-            SoundList("tr_8_snare_drum_04.ogg")
+            SoundList("cycdh_ludflamb_01.ogg"),
+            SoundList("cycdh_ludflamb_02.ogg"),
+            SoundList("cycdh_ludflamb_03.ogg"),
+            SoundList("cycdh_ludflamb_04.ogg"),
+            SoundList("cycdh_ludflamb_05.ogg"),
+            SoundList("cycdh_ludrimb_01.ogg"),
+            SoundList("cycdh_ludrimb_02.ogg"),
+            SoundList("cycdh_ludrimb_03.ogg"),
+            SoundList("cycdh_ludrimb_04.ogg"),
+            SoundList("cycdh_ludrimb_05.ogg"),
+            SoundList("cycdh_ludrimb_06.ogg"),
+            SoundList("cycdh_ludrimb_07.ogg"),
+            SoundList("cycdh_ludsdstb_01.ogg"),
+            SoundList("cycdh_ludsdstb_02.ogg"),
+            SoundList("cycdh_ludsdstb_03.ogg"),
+            SoundList("cycdh_ludsdstb_04.ogg"),
+            SoundList("cycdh_ludsdstb_05.ogg"),
+            SoundList("cycdh_ludsdstb_06.ogg"),
+            SoundList("cycdh_ludsdstb_07.ogg"),
+            SoundList("cycdh_ludsnrb_01.ogg"),
+            SoundList("cycdh_ludsnrb_02.ogg"),
+            SoundList("cycdh_ludsnrb_03.ogg"),
+            SoundList("cycdh_ludsnrb_04.ogg"),
+            SoundList("cycdh_ludsnrb_05.ogg"),
+            SoundList("cycdh_ludsnroffb_01.ogg"),
+            SoundList("cycdh_ludsnroffb_02.ogg"),
+            SoundList("cycdh_ludsnroffb_03.ogg"),
+            SoundList("cycdh_ludsnroffb_04.ogg"),
+            SoundList("cycdh_ludsnroffb_05.ogg"),
+            SoundList("cycdh_ludsnroffb_06.ogg"),
+            SoundList("cycdh_ludsnroffb_07.ogg"),
+            SoundList("cycdh_ludsnroffb_08.ogg")
         )
         lSoundList = arrayListOf(
-                SoundList("low_tom_01.ogg"),
-                SoundList("low_tom_02.ogg"),
-                SoundList("low_tom_03.ogg"),
-                SoundList("low_tom_04.ogg"),
-                SoundList("low_tom_05.ogg"),
-                SoundList("low_tom_06.ogg"),
-                SoundList("low_tom_07.ogg"),
-                SoundList("low_tom_08.ogg"),
-                SoundList("low_tom_09.ogg"),
-                SoundList("low_tom_10.ogg"),
-                SoundList("low_tom_11.ogg"),
-                SoundList("low_tom_12.ogg"),
-                SoundList("mid_tom_01.ogg"),
-                SoundList("mid_tom_02.ogg"),
-                SoundList("mid_tom_03.ogg"),
-                SoundList("mid_tom_04.ogg"),
-                SoundList("mid_tom_05.ogg"),
-                SoundList("mid_tom_06.ogg"),
-                SoundList("mid_tom_07.ogg"),
-                SoundList("mid_tom_08.ogg"),
-                SoundList("mid_tom_09.ogg"),
-                SoundList("mid_tom_10.ogg"),
-                SoundList("mid_tom_11.ogg"),
-                SoundList("mid_tom_12.ogg"),
-                SoundList("high_tom_01.ogg"),
-                SoundList("high_tom_02.ogg"),
-                SoundList("high_tom_03.ogg"),
-                SoundList("high_tom_04.ogg"),
-                SoundList("high_tom_05.ogg"),
-                SoundList("high_tom_06.ogg"),
-                SoundList("high_tom_07.ogg"),
-                SoundList("high_tom_08.ogg"),
-                SoundList("high_tom_09.ogg"),
-                SoundList("high_tom_10.ogg"),
-                SoundList("high_tom_11.ogg"),
-                SoundList("high_tom_12.ogg"),
-            SoundList("tr_909_tom_01.ogg"),
-            SoundList("tr_909_tom_02.ogg"),
-            SoundList("tr_909_tom_03.ogg"),
-            SoundList("tr_8_tom_01.ogg"),
-            SoundList("tr_8_tom_02.ogg"),
-            SoundList("tr_8_tom_03.ogg"),
-            SoundList("tr_8_tom_04.ogg"),
-            SoundList("tr_8_tom_05.ogg")
+            SoundList("cycdh_ludflamc_01.ogg"),
+            SoundList("cycdh_ludflamc_02.ogg"),
+            SoundList("cycdh_ludflamc_03.ogg"),
+            SoundList("cycdh_ludflamc_04.ogg"),
+            SoundList("cycdh_ludflamc_05.ogg"),
+            SoundList("cycdh_ludrimc_01.ogg"),
+            SoundList("cycdh_ludrimc_02.ogg"),
+            SoundList("cycdh_ludrimc_03.ogg"),
+            SoundList("cycdh_ludrimc_04.ogg"),
+            SoundList("cycdh_ludrimc_05.ogg"),
+            SoundList("cycdh_ludrimc_06.ogg"),
+            SoundList("cycdh_ludrimc_07.ogg"),
+            SoundList("cycdh_ludsdstc_01.ogg"),
+            SoundList("cycdh_ludsdstc_02.ogg"),
+            SoundList("cycdh_ludsdstc_03.ogg"),
+            SoundList("cycdh_ludsdstc_04.ogg"),
+            SoundList("cycdh_ludsdstc_05.ogg"),
+            SoundList("cycdh_ludsdstc_06.ogg"),
+            SoundList("cycdh_ludsdstc_07.ogg"),
+            SoundList("cycdh_ludsnrc_01.ogg"),
+            SoundList("cycdh_ludsnrc_02.ogg"),
+            SoundList("cycdh_ludsnrc_03.ogg"),
+            SoundList("cycdh_ludsnrc_04.ogg"),
+            SoundList("cycdh_ludsnrc_05.ogg"),
+            SoundList("cycdh_ludsnroffc_01.ogg"),
+            SoundList("cycdh_ludsnroffc_02.ogg"),
+            SoundList("cycdh_ludsnroffc_03.ogg"),
+            SoundList("cycdh_ludsnroffc_04.ogg"),
+            SoundList("cycdh_ludsnroffc_05.ogg"),
+            SoundList("cycdh_ludsnroffc_06.ogg"),
+            SoundList("cycdh_ludsnroffc_07.ogg"),
+            SoundList("cycdh_ludsnroffc_08.ogg")
+        )
+        mSoundList = arrayListOf(
+            SoundList("pearlpiccolo_side_snroff_01.ogg"),
+            SoundList("pearlpiccolo_side_snroff_02.ogg"),
+            SoundList("pearlpiccolo_side_snroff_03.ogg"),
+            SoundList("pearlpiccolo_side_snroff_04.ogg"),
+            SoundList("pearlpiccolo_side_snroff_05.ogg"),
+            SoundList("pearlpiccolo_side_snron_01.ogg"),
+            SoundList("pearlpiccolo_side_snron_02.ogg"),
+            SoundList("pearlpiccolo_side_snron_03.ogg"),
+            SoundList("pearlpiccolo_side_snron_04.ogg"),
+            SoundList("pearlpiccolo_side_snron_05.ogg"),
+            SoundList("pearlpiccolo_side_snron_06.ogg"),
+            SoundList("pearlpiccolo_side_snron_07.ogg"),
+            SoundList("pearlpiccolo_side_snron_08.ogg"),
+            SoundList("pearlpiccolo_side_snron_09.ogg")
+        )
+        aaSoundList = arrayListOf(
+            SoundList("cycdh_sonflam_01.ogg"),
+            SoundList("cycdh_sonflam_02.ogg"),
+            SoundList("cycdh_sonflam_03.ogg"),
+            SoundList("cycdh_sonrim_01.ogg"),
+            SoundList("cycdh_sonrim_02.ogg"),
+            SoundList("cycdh_sonrim_03.ogg"),
+            SoundList("cycdh_sonrim_04.ogg"),
+            SoundList("cycdh_sonrim_05.ogg"),
+            SoundList("cycdh_sonrim_06.ogg"),
+            SoundList("cycdh_sonrim_07.ogg"),
+            SoundList("cycdh_sonrim_08.ogg"),
+            SoundList("cycdh_sonrim_09.ogg"),
+            SoundList("cycdh_sonrim_10.ogg"),
+            SoundList("cycdh_sonsdst_01.ogg"),
+            SoundList("cycdh_sonsdst_02.ogg"),
+            SoundList("cycdh_sonsdst_03.ogg"),
+            SoundList("cycdh_sonsdst_04.ogg"),
+            SoundList("cycdh_sonsdst_05.ogg"),
+            SoundList("cycdh_sonsdst_06.ogg"),
+            SoundList("cycdh_sonsdst_07.ogg"),
+            SoundList("cycdh_sonsnr_01.ogg"),
+            SoundList("cycdh_sonsnr_02.ogg"),
+            SoundList("cycdh_sonsnr_03.ogg"),
+            SoundList("cycdh_sonsnr_04.ogg"),
+            SoundList("cycdh_sonsnr_05.ogg"),
+            SoundList("cycdh_sonsnr_06.ogg"),
+            SoundList("cycdh_sonsnroff_01.ogg"),
+            SoundList("cycdh_sonsnroff_02.ogg"),
+            SoundList("cycdh_sonsnroff_03.ogg"),
+            SoundList("cycdh_sonsnroff_04.ogg"),
+            SoundList("cycdh_sonsnroff_05.ogg"),
+            SoundList("cycdh_sonsnroff_06.ogg"),
+            SoundList("cycdh_sonupsd_01.ogg"),
+            SoundList("cycdh_sonupsd_02.ogg"),
+            SoundList("cycdh_sonupsd_03.ogg"),
+            SoundList("cycdh_sonupsd_04.ogg"),
+            SoundList("cycdh_sonupsd_05.ogg"),
+            SoundList("cycdh_sonupsd_06.ogg"),
+            SoundList("cycdh_sonupsd_07.ogg"),
+            SoundList("cycdh_sonupsd_08.ogg")
+        )
+        abSoundList = arrayListOf(
+            SoundList("cycdh_tamflam_01.ogg"),
+            SoundList("cycdh_tamflam_02.ogg"),
+            SoundList("cycdh_tamflam_03.ogg"),
+            SoundList("cycdh_tamrim_01.ogg"),
+            SoundList("cycdh_tamrim_02.ogg"),
+            SoundList("cycdh_tamrim_03.ogg"),
+            SoundList("cycdh_tamrim_04.ogg"),
+            SoundList("cycdh_tamrim_05.ogg"),
+            SoundList("cycdh_tamrim_06.ogg"),
+            SoundList("cycdh_tamrim_07.ogg"),
+            SoundList("cycdh_tamrim_08.ogg"),
+            SoundList("cycdh_tamrimtgt_01.ogg"),
+            SoundList("cycdh_tamrimtgt_02.ogg"),
+            SoundList("cycdh_tamrimtgt_03.ogg"),
+            SoundList("cycdh_tamrimtgt_04.ogg"),
+            SoundList("cycdh_tamrimtgt_05.ogg"),
+            SoundList("cycdh_tamsdst_01.ogg"),
+            SoundList("cycdh_tamsdst_02.ogg"),
+            SoundList("cycdh_tamsdst_03.ogg"),
+            SoundList("cycdh_tamsdst_04.ogg"),
+            SoundList("cycdh_tamsdst_05.ogg"),
+            SoundList("cycdh_tamsdst_06.ogg"),
+            SoundList("cycdh_tamsdst_07.ogg"),
+            SoundList("cycdh_tamsdst_08.ogg"),
+            SoundList("cycdh_tamsnr_01.ogg"),
+            SoundList("cycdh_tamsnr_02.ogg"),
+            SoundList("cycdh_tamsnr_03.ogg"),
+            SoundList("cycdh_tamsnr_04.ogg"),
+            SoundList("cycdh_tamsnr_05.ogg"),
+            SoundList("cycdh_tamsnr_06.ogg"),
+            SoundList("cycdh_tamsnr_07.ogg"),
+            SoundList("cycdh_tamsnr_08.ogg"),
+            SoundList("cycdh_tamsnred_01.ogg"),
+            SoundList("cycdh_tamsnred_02.ogg"),
+            SoundList("cycdh_tamsnred_03.ogg"),
+            SoundList("cycdh_tamsnred_04.ogg"),
+            SoundList("cycdh_tamsnred_05.ogg"),
+            SoundList("cycdh_tamsnred_06.ogg"),
+            SoundList("cycdh_tamsnred_07.ogg"),
+            SoundList("cycdh_tamsnred_08.ogg"),
+            SoundList("cycdh_tamsnrtgt_01.ogg"),
+            SoundList("cycdh_tamsnrtgt_02.ogg"),
+            SoundList("cycdh_tamsnrtgt_03.ogg"),
+            SoundList("cycdh_tamsnrtgt_04.ogg"),
+            SoundList("cycdh_tamsnrtgt_05.ogg"),
+            SoundList("cycdh_tamsnrtgt_06.ogg"),
+            SoundList("cycdh_tamsnrtgt_07.ogg"),
+            SoundList("cycdh_tamupsd_01.ogg"),
+            SoundList("cycdh_tamupsd_02.ogg"),
+            SoundList("cycdh_tamupsd_03.ogg"),
+            SoundList("cycdh_tamupsd_04.ogg"),
+            SoundList("cycdh_tamupsd_05.ogg"),
+            SoundList("cycdh_tamupsd_06.ogg"),
+            SoundList("cycdh_tamupsd_07.ogg"),
+            SoundList("cycdh_tamupsd_08.ogg"),
+            SoundList("cycdh_tamupsd_09.ogg")
+        )
+        acSoundList = arrayListOf(
+            SoundList("cycdh_piccoloa_01.ogg"),
+            SoundList("cycdh_piccoloa_02.ogg"),
+            SoundList("cycdh_piccoloa_03.ogg"),
+            SoundList("cycdh_piccoloa_04.ogg"),
+            SoundList("cycdh_piccolob_01.ogg"),
+            SoundList("cycdh_piccolob_02.ogg"),
+            SoundList("cycdh_piccolob_03.ogg"),
+            SoundList("cycdh_piccolob_04.ogg"),
+            SoundList("cycdh_piccoloc_01.ogg"),
+            SoundList("cycdh_piccoloc_02.ogg"),
+            SoundList("cycdh_piccoloc_03.ogg"),
+            SoundList("cycdh_piccoloc_04.ogg"),
+            SoundList("cycdh_piccolod_01.ogg"),
+            SoundList("cycdh_piccolod_02.ogg"),
+            SoundList("cycdh_piccolod_03.ogg"),
+            SoundList("cycdh_piccolod_04.ogg"),
+            SoundList("cycdh_piccoloe_01.ogg"),
+            SoundList("cycdh_piccoloe_02.ogg"),
+            SoundList("cycdh_piccoloe_03.ogg"),
+            SoundList("cycdh_piccoloe_04.ogg")
+        )
+        adSoundList = arrayListOf(
+            SoundList("tom_1.ogg"),
+            SoundList("tom_2.ogg"),
+            SoundList("tom_3.ogg"),
+            SoundList("tom_4.ogg"),
+            SoundList("tom_5.ogg"),
+            SoundList("tom_6.ogg"),
+            SoundList("tom_7.ogg"),
+            SoundList("tom_8.ogg"),
+            SoundList("tom_9.ogg"),
+            SoundList("tom_10.ogg"),
+            SoundList("tom_11.ogg"),
+            SoundList("tom_12.ogg"),
+            SoundList("tom_13.ogg"),
+            SoundList("tom_14.ogg"),
+            SoundList("tom_15.ogg"),
+            SoundList("tom_16.ogg"),
+            SoundList("tom_17.ogg"),
+            SoundList("tom_18.ogg"),
+            SoundList("tom_19.ogg"),
+            SoundList("tom_20.ogg"),
+            SoundList("tom_21.ogg"),
+            SoundList("tom_22.ogg"),
+            SoundList("tom_23.ogg"),
+            SoundList("tom_24.ogg"),
+            SoundList("tom_25.ogg"),
+            SoundList("tom_26.ogg"),
+            SoundList("tom_27.ogg"),
+            SoundList("tom_28.ogg"),
+            SoundList("tom_29.ogg"),
+            SoundList("tom_30.ogg"),
+            SoundList("tom_31.ogg"),
+            SoundList("tom_32.ogg"),
+            SoundList("tom_33.ogg"),
+            SoundList("tom_34.ogg"),
+            SoundList("tom_35.ogg"),
+            SoundList("tom_36.ogg"),
+            SoundList("tom_37.ogg"),
+            SoundList("tom_38.ogg"),
+            SoundList("tom_39.ogg"),
+            SoundList("tom_40.ogg"),
+            SoundList("tom_41.ogg"),
+            SoundList("tom_42.ogg"),
+            SoundList("tom_43.ogg")
         )
         nSoundList = arrayListOf(
-            SoundList("bass_drum_short_11.ogg"),
-            SoundList("tr_909_clap.ogg"),
-            SoundList("claves_04.ogg"),
-            SoundList("clsd_hi_hat_01.ogg"),
-            SoundList("high_conga_01.ogg"),
-            SoundList("cowbell_01b.ogg"),
-            SoundList("tr_8_cymbal_01.ogg"),
-            SoundList("maracas_02.ogg"),
-            SoundList("tr_909_open_hi_hat_01.ogg"),
-            SoundList("rimshot_01.ogg"),
-            SoundList("tr_8_snare_drum_01.ogg"),
-            SoundList("tr_909_tom_01.ogg")
+            SoundList("bass_85_01.ogg"),
+            SoundList("bass_85_02.ogg"),
+            SoundList("bass_85_03.ogg"),
+            SoundList("bass_90_01.ogg"),
+            SoundList("bass_90_02.ogg"),
+            SoundList("bass_90_03.ogg"),
+            SoundList("bass_90_04.ogg"),
+            SoundList("bass_90_05.ogg"),
+            SoundList("bass_95_01.ogg"),
+            SoundList("bass_95_02.ogg"),
+            SoundList("bass_95_03.ogg"),
+            SoundList("bass_100_01.ogg"),
+            SoundList("bass_100_02.ogg"),
+            SoundList("bass_100_03.ogg"),
+            SoundList("bass_100_04.ogg"),
+            SoundList("bass_100_05.ogg"),
+            SoundList("bass_110_01.ogg"),
+            SoundList("bass_110_02.ogg"),
+            SoundList("bass_110_03.ogg"),
+            SoundList("bass_110_04.ogg"),
+            SoundList("bass_110_05.ogg"),
+            SoundList("bass_110_06.ogg"),
+            SoundList("bass_110_07.ogg"),
+            SoundList("bass_110_08.ogg"),
+            SoundList("bass_120_01.ogg"),
+            SoundList("bass_120_02.ogg"),
+            SoundList("bass_120_03.ogg"),
+            SoundList("bass_120_04.ogg"),
+            SoundList("bass_120_05.ogg"),
+            SoundList("bass_120_06.ogg"),
+            SoundList("bass_120_07.ogg"),
+            SoundList("bass_120_08.ogg"),
         )
         oSoundList = arrayListOf(
-            SoundList("loop_bd_85_01.ogg"),
-            SoundList("loop_bd_85_02.ogg"),
-            SoundList("loop_bd_85_03.ogg"),
-            SoundList("loop_bd_85_04.ogg"),
-            SoundList("loop_bd_85_05.ogg"),
-            SoundList("loop_bd_85_06.ogg"),
-            SoundList("loop_bd_85_07.ogg"),
-            SoundList("loop_bd_85_08.ogg"),
-            SoundList("loop_hats_85_01.ogg"),
-            SoundList("loop_hats_85_02.ogg"),
-            SoundList("loop_hats_85_03.ogg"),
-            SoundList("loop_hats_85_04.ogg"),
-            SoundList("loop_hats_85_05.ogg"),
-            SoundList("loop_hats_85_06.ogg"),
-            SoundList("loop_hats_85_07.ogg"),
-            SoundList("loop_hats_85_08.ogg"),
-            SoundList("loop_perc_85_01.ogg"),
-            SoundList("loop_perc_85_02.ogg"),
-            SoundList("loop_perc_85_03.ogg"),
-            SoundList("loop_perc_85_04.ogg"),
-            SoundList("loop_sd_85_01.ogg"),
-            SoundList("loop_sd_85_02.ogg"),
-            SoundList("loop_sd_85_03.ogg"),
-            SoundList("loop_sd_85_04.ogg"),
-            SoundList("loop_sd_85_05.ogg"),
-            SoundList("loop_sd_85_06.ogg"),
-            SoundList("loop_sd_85_07.ogg"),
-            SoundList("loop_sd_85_08.ogg"),
-            SoundList("loop_toms_85_01.ogg"),
-            SoundList("loop_toms_85_02.ogg"),
-            SoundList("loop_toms_85_03.ogg"),
-            SoundList("loop_toms_85_04.ogg"),
-                SoundList("loop_bd_95_01.ogg"),
-                SoundList("loop_bd_95_02.ogg"),
-                SoundList("loop_bd_95_03.ogg"),
-                SoundList("loop_bd_95_04.ogg"),
-                SoundList("loop_bd_95_05.ogg"),
-                SoundList("loop_bd_95_06.ogg"),
-                SoundList("loop_bd_95_07.ogg"),
-                SoundList("loop_bd_95_08.ogg"),
-                SoundList("loop_hats_95_01.ogg"),
-                SoundList("loop_hats_95_02.ogg"),
-                SoundList("loop_hats_95_03.ogg"),
-                SoundList("loop_hats_95_04.ogg"),
-                SoundList("loop_hats_95_05.ogg"),
-                SoundList("loop_hats_95_06.ogg"),
-                SoundList("loop_hats_95_07.ogg"),
-                SoundList("loop_hats_95_08.ogg"),
-                SoundList("loop_perc_95_01.ogg"),
-                SoundList("loop_perc_95_02.ogg"),
-                SoundList("loop_perc_95_03.ogg"),
-                SoundList("loop_perc_95_04.ogg"),
-                SoundList("loop_sd_95_01.ogg"),
-                SoundList("loop_sd_95_02.ogg"),
-                SoundList("loop_sd_95_03.ogg"),
-                SoundList("loop_sd_95_04.ogg"),
-                SoundList("loop_sd_95_05.ogg"),
-                SoundList("loop_sd_95_06.ogg"),
-                SoundList("loop_sd_95_07.ogg"),
-                SoundList("loop_sd_95_08.ogg"),
-                SoundList("loop_toms_95_01.ogg"),
-                SoundList("loop_toms_95_02.ogg"),
-                SoundList("loop_toms_95_03.ogg"),
-                SoundList("loop_toms_95_04.ogg"),
-            SoundList("loop_bd_105_01.ogg"),
-            SoundList("loop_bd_105_02.ogg"),
-            SoundList("loop_bd_105_03.ogg"),
-            SoundList("loop_bd_105_04.ogg"),
-            SoundList("loop_bd_105_05.ogg"),
-            SoundList("loop_bd_105_06.ogg"),
-            SoundList("loop_bd_105_07.ogg"),
-            SoundList("loop_bd_105_08.ogg"),
-            SoundList("loop_hats_105_01.ogg"),
-            SoundList("loop_hats_105_02.ogg"),
-            SoundList("loop_hats_105_03.ogg"),
-            SoundList("loop_hats_105_04.ogg"),
-            SoundList("loop_hats_105_05.ogg"),
-            SoundList("loop_hats_105_06.ogg"),
-            SoundList("loop_hats_105_07.ogg"),
-            SoundList("loop_hats_105_08.ogg"),
-            SoundList("loop_perc_105_01.ogg"),
-            SoundList("loop_perc_105_02.ogg"),
-            SoundList("loop_perc_105_03.ogg"),
-            SoundList("loop_perc_105_04.ogg"),
-            SoundList("loop_sd_105_01.ogg"),
-            SoundList("loop_sd_105_02.ogg"),
-            SoundList("loop_sd_105_03.ogg"),
-            SoundList("loop_sd_105_04.ogg"),
-            SoundList("loop_sd_105_05.ogg"),
-            SoundList("loop_sd_105_06.ogg"),
-            SoundList("loop_sd_105_07.ogg"),
-            SoundList("loop_sd_105_08.ogg"),
-            SoundList("loop_toms_105_01.ogg"),
-            SoundList("loop_toms_105_02.ogg"),
-            SoundList("loop_toms_105_03.ogg"),
-            SoundList("loop_toms_105_04.ogg"),
-            SoundList("loop_bd_124_01.ogg"),
-            SoundList("loop_bd_124_02.ogg"),
-            SoundList("loop_bd_124_03.ogg"),
-            SoundList("loop_bd_124_04.ogg"),
-            SoundList("loop_bd_124_05.ogg"),
-            SoundList("loop_bd_124_06.ogg"),
-            SoundList("loop_bd_124_07.ogg"),
-            SoundList("loop_bd_124_08.ogg"),
-            SoundList("loop_hats_124_01.ogg"),
-            SoundList("loop_hats_124_02.ogg"),
-            SoundList("loop_hats_124_03.ogg"),
-            SoundList("loop_hats_124_04.ogg"),
-            SoundList("loop_hats_124_05.ogg"),
-            SoundList("loop_hats_124_06.ogg"),
-            SoundList("loop_hats_124_07.ogg"),
-            SoundList("loop_hats_124_08.ogg"),
-            SoundList("loop_perc_124_01.ogg"),
-            SoundList("loop_perc_124_02.ogg"),
-            SoundList("loop_perc_124_03.ogg"),
-            SoundList("loop_perc_124_04.ogg"),
-            SoundList("loop_sd_124_01.ogg"),
-            SoundList("loop_sd_124_02.ogg"),
-            SoundList("loop_sd_124_03.ogg"),
-            SoundList("loop_sd_124_04.ogg"),
-            SoundList("loop_sd_124_05.ogg"),
-            SoundList("loop_sd_124_06.ogg"),
-            SoundList("loop_sd_124_07.ogg"),
-            SoundList("loop_toms_124_01.ogg"),
-            SoundList("loop_toms_124_02.ogg"),
-            SoundList("loop_toms_124_03.ogg"),
-            SoundList("loop_toms_124_04.ogg"),
-            SoundList("loop_bd_132_01.ogg"),
-            SoundList("loop_bd_132_02.ogg"),
-            SoundList("loop_bd_132_03.ogg"),
-            SoundList("loop_bd_132_04.ogg"),
-            SoundList("loop_bd_132_05.ogg"),
-            SoundList("loop_bd_132_06.ogg"),
-            SoundList("loop_bd_132_07.ogg"),
-            SoundList("loop_bd_132_08.ogg"),
-            SoundList("loop_hats_132_01.ogg"),
-            SoundList("loop_hats_132_02.ogg"),
-            SoundList("loop_hats_132_03.ogg"),
-            SoundList("loop_hats_132_04.ogg"),
-            SoundList("loop_hats_132_05.ogg"),
-            SoundList("loop_hats_132_06.ogg"),
-            SoundList("loop_hats_132_07.ogg"),
-            SoundList("loop_hats_132_08.ogg"),
-            SoundList("loop_perc_132_01.ogg"),
-            SoundList("loop_perc_132_02.ogg"),
-            SoundList("loop_perc_132_03.ogg"),
-            SoundList("loop_perc_132_04.ogg"),
-            SoundList("loop_sd_132_01.ogg"),
-            SoundList("loop_sd_132_02.ogg"),
-            SoundList("loop_sd_132_03.ogg"),
-            SoundList("loop_sd_132_04.ogg"),
-            SoundList("loop_sd_132_05.ogg"),
-            SoundList("loop_sd_132_06.ogg"),
-            SoundList("loop_sd_132_07.ogg"),
-            SoundList("loop_sd_132_08.ogg"),
-            SoundList("loop_toms_132_01.ogg"),
-            SoundList("loop_toms_132_02.ogg"),
-            SoundList("loop_toms_132_03.ogg"),
-            SoundList("loop_toms_132_04.ogg")
+            SoundList("drums_85_01.ogg"),
+            SoundList("drums_85_02.ogg"),
+            SoundList("drums_90_01.ogg"),
+            SoundList("drums_90_02.ogg"),
+            SoundList("drums_90_03.ogg"),
+            SoundList("drums_90_04.ogg"),
+            SoundList("drums_90_05.ogg"),
+            SoundList("drums_90_06.ogg"),
+            SoundList("drums_90_07.ogg"),
+            SoundList("drums_90_08.ogg"),
+            SoundList("drums_90_09.ogg"),
+            SoundList("drums_90_10.ogg"),
+            SoundList("drums_90_11.ogg"),
+            SoundList("drums_90_12.ogg"),
+            SoundList("drums_90_13.ogg"),
+            SoundList("drums_90_14.ogg"),
+            SoundList("drums_90_15.ogg"),
+            SoundList("drums_95_01.ogg"),
+            SoundList("drums_95_02.ogg"),
+            SoundList("drums_95_03.ogg"),
+            SoundList("drums_95_04.ogg"),
+            SoundList("drums_95_05.ogg"),
+            SoundList("drums_95_06.ogg"),
+            SoundList("drums_95_07.ogg"),
+            SoundList("drums_95_08.ogg"),
+            SoundList("drums_95_09.ogg"),
+            SoundList("drums_95_10.ogg"),
+            SoundList("drums_95_11.ogg"),
+            SoundList("drums_95_12.ogg"),
+            SoundList("drums_95_13.ogg"),
+            SoundList("drums_95_14.ogg"),
+            SoundList("drums_95_15.ogg"),
+            SoundList("drums_95_16.ogg"),
+            SoundList("drums_95_17.ogg"),
+            SoundList("drums_95_18.ogg"),
+            SoundList("drums_95_19.ogg"),
+            SoundList("drums_100_01.ogg"),
+            SoundList("drums_100_02.ogg"),
+            SoundList("drums_100_03.ogg"),
+            SoundList("drums_100_04.ogg"),
+            SoundList("drums_100_05.ogg"),
+            SoundList("drums_100_06.ogg"),
+            SoundList("drums_100_07.ogg"),
+            SoundList("drums_100_08.ogg"),
+            SoundList("drums_110_01.ogg"),
+            SoundList("drums_110_02.ogg"),
+            SoundList("drums_110_03.ogg"),
+            SoundList("drums_110_04.ogg"),
+            SoundList("drums_110_05.ogg"),
+            SoundList("drums_110_06.ogg"),
+            SoundList("drums_110_07.ogg"),
+            SoundList("drums_110_08.ogg"),
+            SoundList("drums_110_09.ogg"),
+            SoundList("drums_110_10.ogg"),
+            SoundList("drums_110_11.ogg"),
+            SoundList("drums_110_12.ogg"),
+            SoundList("drums_110_13.ogg"),
+            SoundList("drums_110_14.ogg"),
+            SoundList("drums_110_15.ogg"),
+            SoundList("drums_110_16.ogg"),
+            SoundList("drums_110_17.ogg"),
+            SoundList("drums_110_18.ogg"),
+            SoundList("drums_110_19.ogg"),
+            SoundList("drums_110_20.ogg"),
+            SoundList("drums_110_21.ogg"),
+            SoundList("drums_110_22.ogg"),
+            SoundList("drums_110_23.ogg"),
+            SoundList("drums_110_24.ogg"),
+            SoundList("drums_110_25.ogg"),
+            SoundList("drums_110_26.ogg"),
+            SoundList("drums_120_01.ogg"),
+            SoundList("drums_120_02.ogg"),
+            SoundList("drums_120_03.ogg"),
+            SoundList("drums_120_04.ogg"),
+            SoundList("drums_120_05.ogg"),
+            SoundList("drums_120_06.ogg"),
+            SoundList("drums_120_07.ogg"),
+            SoundList("drums_120_08.ogg"),
+            SoundList("drums_120_09.ogg"),
+            SoundList("drums_120_10.ogg"),
+            SoundList("drums_120_11.ogg"),
+            SoundList("drums_120_12.ogg"),
+            SoundList("drums_120_13.ogg"),
+            SoundList("drums_120_14.ogg"),
+            SoundList("drums_120_15.ogg"),
+            SoundList("drums_120_16.ogg"),
+            SoundList("drums_120_17.ogg"),
+            SoundList("drums_120_18.ogg"),
+            SoundList("drums_120_19.ogg"),
+            SoundList("drums_120_20.ogg"),
+            SoundList("drums_120_21.ogg")
         )
         pSoundList = arrayListOf(
-
+            SoundList("guitar_85_01.ogg"),
+            SoundList("guitar_85_02.ogg"),
+            SoundList("guitar_85_03.ogg"),
+            SoundList("guitar_85_04.ogg"),
+            SoundList("guitar_85_05.ogg"),
+            SoundList("guitar_85_06.ogg"),
+            SoundList("guitar_85_07.ogg"),
+            SoundList("guitar_85_08.ogg"),
+            SoundList("guitar_85_09.ogg"),
+            SoundList("guitar_85_10.ogg"),
+            SoundList("guitar_85_11.ogg"),
+            SoundList("guitar_85_12.ogg"),
+            SoundList("guitar_85_13.ogg"),
+            SoundList("guitar_90_01.ogg"),
+            SoundList("guitar_90_02.ogg"),
+            SoundList("guitar_90_03.ogg"),
+            SoundList("guitar_90_04.ogg"),
+            SoundList("guitar_90_05.ogg"),
+            SoundList("guitar_90_06.ogg"),
+            SoundList("guitar_90_07.ogg"),
+            SoundList("guitar_90_08.ogg"),
+            SoundList("guitar_90_09.ogg"),
+            SoundList("guitar_90_10.ogg"),
+            SoundList("guitar_90_11.ogg"),
+            SoundList("guitar_90_12.ogg"),
+            SoundList("guitar_90_13.ogg"),
+            SoundList("guitar_90_14.ogg"),
+            SoundList("guitar_90_15.ogg"),
+            SoundList("guitar_90_16.ogg"),
+            SoundList("guitar_90_17.ogg"),
+            SoundList("guitar_90_18.ogg"),
+            SoundList("guitar_90_19.ogg"),
+            SoundList("guitar_90_20.ogg"),
+            SoundList("guitar_90_21.ogg"),
+            SoundList("guitar_95_01.ogg"),
+            SoundList("guitar_95_02.ogg"),
+            SoundList("guitar_95_03.ogg"),
+            SoundList("guitar_95_04.ogg"),
+            SoundList("guitar_95_05.ogg"),
+            SoundList("guitar_95_06.ogg"),
+            SoundList("guitar_95_07.ogg"),
+            SoundList("guitar_95_08.ogg"),
+            SoundList("guitar_100_01.ogg"),
+            SoundList("guitar_100_02.ogg"),
+            SoundList("guitar_100_03.ogg"),
+            SoundList("guitar_100_04.ogg"),
+            SoundList("guitar_100_05.ogg"),
+            SoundList("guitar_100_06.ogg"),
+            SoundList("guitar_110_01.ogg"),
+            SoundList("guitar_110_02.ogg"),
+            SoundList("guitar_110_03.ogg"),
+            SoundList("guitar_110_04.ogg"),
+            SoundList("guitar_110_05.ogg"),
+            SoundList("guitar_110_06.ogg"),
+            SoundList("guitar_110_07.ogg"),
+            SoundList("guitar_110_08.ogg"),
+            SoundList("guitar_110_09.ogg"),
+            SoundList("guitar_110_10.ogg"),
+            SoundList("guitar_110_11.ogg"),
+            SoundList("guitar_120_01.ogg"),
+            SoundList("guitar_120_02.ogg"),
+            SoundList("guitar_120_03.ogg"),
+            SoundList("guitar_120_04.ogg"),
+            SoundList("guitar_120_05.ogg"),
+            SoundList("guitar_120_06.ogg"),
+            SoundList("guitar_120_07.ogg"),
+            SoundList("guitar_120_08.ogg"),
+            SoundList("guitar_120_09.ogg"),
+            SoundList("guitar_120_10.ogg"),
+            SoundList("guitar_120_11.ogg"),
+            SoundList("guitar_120_12.ogg"),
+            SoundList("guitar_120_13.ogg"),
+            SoundList("guitar_120_14.ogg"),
+            SoundList("guitar_120_15.ogg"),
+            SoundList("guitar_120_16.ogg"),
+            SoundList("guitar_120_17.ogg"),
+            SoundList("guitar_120_18.ogg"),
+            SoundList("guitar_120_19.ogg"),
+            SoundList("guitar_120_20.ogg"),
+            SoundList("guitar_120_21.ogg")
         )
         qSoundList = arrayListOf(
-
+            SoundList("keys_85_01.ogg"),
+            SoundList("keys_85_02.ogg"),
+            SoundList("keys_90_01.ogg"),
+            SoundList("keys_90_02.ogg"),
+            SoundList("keys_90_03.ogg"),
+            SoundList("keys_90_04.ogg"),
+            SoundList("keys_90_05.ogg"),
+            SoundList("keys_90_06.ogg"),
+            SoundList("keys_90_07.ogg"),
+            SoundList("keys_90_08.ogg"),
+            SoundList("keys_95_01.ogg"),
+            SoundList("keys_95_02.ogg"),
+            SoundList("keys_95_03.ogg"),
+            SoundList("keys_100_01.ogg"),
+            SoundList("keys_100_02.ogg"),
+            SoundList("keys_100_03.ogg"),
+            SoundList("keys_100_04.ogg"),
+            SoundList("keys_100_05.ogg"),
+            SoundList("keys_110_01.ogg"),
+            SoundList("keys_110_02.ogg"),
+            SoundList("keys_110_03.ogg"),
+            SoundList("keys_110_04.ogg"),
+            SoundList("keys_110_05.ogg"),
+            SoundList("keys_110_06.ogg"),
+            SoundList("keys_120_01.ogg"),
+            SoundList("keys_120_02.ogg"),
+            SoundList("keys_120_03.ogg"),
+            SoundList("keys_120_04.ogg"),
+            SoundList("keys_120_05.ogg"),
+            SoundList("keys_120_06.ogg")
         )
         rSoundList = arrayListOf(
-
+            SoundList("orch_85_01.ogg"),
+            SoundList("orch_95.ogg"),
+            SoundList("orch_100_01.ogg"),
+            SoundList("orch_100_02.ogg"),
+            SoundList("orch_100_03.ogg"),
+            SoundList("orch_110_01.ogg"),
+            SoundList("orch_110_02.ogg")
+        )
+        baSoundList = arrayListOf(
+            SoundList("percussion_85_01.ogg"),
+            SoundList("percussion_85_02.ogg"),
+            SoundList("percussion_85_03.ogg"),
+            SoundList("percussion_85_04.ogg"),
+            SoundList("percussion_90_01.ogg"),
+            SoundList("percussion_90_02.ogg"),
+            SoundList("percussion_90_03.ogg"),
+            SoundList("percussion_90_04.ogg"),
+            SoundList("percussion_90_05.ogg"),
+            SoundList("percussion_90_06.ogg"),
+            SoundList("percussion_90_07.ogg"),
+            SoundList("percussion_90_08.ogg"),
+            SoundList("percussion_90_09.ogg"),
+            SoundList("percussion_90_10.ogg"),
+            SoundList("percussion_95_01.ogg"),
+            SoundList("percussion_95_02.ogg"),
+            SoundList("percussion_95_03.ogg"),
+            SoundList("percussion_100_01.ogg"),
+            SoundList("percussion_100_02.ogg"),
+            SoundList("percussion_100_03.ogg"),
+            SoundList("percussion_100_04.ogg"),
+            SoundList("percussion_100_05.ogg"),
+            SoundList("percussion_100_06.ogg"),
+            SoundList("percussion_100_07.ogg"),
+            SoundList("percussion_100_08.ogg"),
+            SoundList("percussion_100_09.ogg"),
+            SoundList("percussion_100_10.ogg"),
+            SoundList("percussion_100_11.ogg"),
+            SoundList("percussion_100_12.ogg"),
+            SoundList("percussion_110_01.ogg"),
+            SoundList("percussion_110_02.ogg"),
+            SoundList("percussion_110_03.ogg"),
+            SoundList("percussion_110_04.ogg"),
+            SoundList("percussion_110_05.ogg"),
+            SoundList("percussion_110_06.ogg"),
+            SoundList("percussion_110_07.ogg"),
+            SoundList("percussion_110_08.ogg"),
+            SoundList("percussion_110_09.ogg"),
+            SoundList("percussion_110_10.ogg"),
+            SoundList("percussion_110_11.ogg"),
+            SoundList("percussion_110_12.ogg"),
+            SoundList("percussion_110_13.ogg"),
+            SoundList("percussion_110_14.ogg"),
+            SoundList("percussion_110_15.ogg"),
+            SoundList("percussion_120_01.ogg"),
+            SoundList("percussion_120_02.ogg"),
+            SoundList("percussion_120_03.ogg"),
+            SoundList("percussion_120_04.ogg"),
+            SoundList("percussion_120_05.ogg"),
+            SoundList("percussion_120_06.ogg"),
+            SoundList("percussion_120_07.ogg"),
+            SoundList("percussion_120_08.ogg"),
+            SoundList("percussion_120_09.ogg"),
+            SoundList("percussion_120_10.ogg"),
+            SoundList("percussion_120_11.ogg"),
+            SoundList("percussion_120_12.ogg"),
+            SoundList("percussion_120_13.ogg")
+        )
+        bbSoundList = arrayListOf(
+            SoundList("synth_90_01.ogg"),
+            SoundList("synth_90_02.ogg"),
+            SoundList("synth_90_03.ogg"),
+            SoundList("synth_90_04.ogg"),
+            SoundList("synth_90_05.ogg"),
+            SoundList("synth_90_06.ogg"),
+            SoundList("synth_90_07.ogg"),
+            SoundList("synth_95_01.ogg"),
+            SoundList("synth_95_02.ogg"),
+            SoundList("synth_100_01.ogg"),
+            SoundList("synth_100_02.ogg"),
+            SoundList("synth_100_03.ogg"),
+            SoundList("synth_100_04.ogg"),
+            SoundList("synth_100_05.ogg"),
+            SoundList("synth_110_01.ogg"),
+            SoundList("synth_110_02.ogg"),
+            SoundList("synth_110_03.ogg"),
+            SoundList("synth_110_04.ogg"),
+            SoundList("synth_110_05.ogg"),
+            SoundList("synth_110_06.ogg"),
+            SoundList("synth_110_07.ogg"),
+            SoundList("synth_120_01.ogg"),
+            SoundList("synth_120_02.ogg"),
+            SoundList("synth_120_03.ogg"),
+            SoundList("synth_120_04.ogg")
         )
         sSoundList = arrayListOf()
         tSoundList = arrayListOf()
+        uSoundList = arrayListOf(
+            SoundList("pearlpiccolo_side_snroff_01.ogg"),
+            SoundList("pearlpiccolo_side_snron_01.ogg"),
+            SoundList("acoustic_hat_01.ogg"),
+            SoundList("khats_clsd_01.ogg"),
+            SoundList("closed_hat_03.ogg"),
+            SoundList("tom_2.ogg"),
+            SoundList("kick_04.ogg")
+        )
 
+        a0CustomAdapter = CustomAdapter(this, a0SoundList, this)
         aCustomAdapter = CustomAdapter(this, aSoundList, this)
         bCustomAdapter = CustomAdapter(this, bSoundList, this)
         cCustomAdapter = CustomAdapter(this, cSoundList, this)
@@ -1370,13 +1766,21 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
         jCustomAdapter = CustomAdapter(this, jSoundList, this)
         kCustomAdapter = CustomAdapter(this, kSoundList, this)
         lCustomAdapter = CustomAdapter(this, lSoundList, this)
+        mCustomAdapter = CustomAdapter(this, mSoundList, this)
+        aaCustomAdapter = CustomAdapter(this, aaSoundList, this)
+        abCustomAdapter = CustomAdapter(this, abSoundList, this)
+        acCustomAdapter = CustomAdapter(this, acSoundList, this)
+        adCustomAdapter = CustomAdapter(this, adSoundList, this)
         nCustomAdapter = CustomAdapter(this, nSoundList, this)
         oCustomAdapter = CustomAdapter(this, oSoundList, this)
         pCustomAdapter = CustomAdapter(this, pSoundList, this)
         qCustomAdapter = CustomAdapter(this, qSoundList, this)
         rCustomAdapter = CustomAdapter(this, rSoundList, this)
+        baCustomAdapter = CustomAdapter(this, baSoundList, this)
+        bbCustomAdapter = CustomAdapter(this, bbSoundList, this)
         sCustomAdapter = CustomAdapter(this, sSoundList, this)
         tCustomAdapter = CustomAdapter(this, tSoundList, this)
+        uCustomAdapter = CustomAdapter(this, uSoundList, this)
 
         soundListView.adapter = aCustomAdapter
 
@@ -1423,89 +1827,119 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 when(position){
                     0 -> {
                         buttonB = 2
+                        soundListView.adapter = a0CustomAdapter
+                        a0CustomAdapter.notifyDataSetChanged()
+                        soundListView.visibility = View.VISIBLE
+                    }
+                    1 -> {
+                        buttonB = 2
                         soundListView.adapter = aCustomAdapter
                         aCustomAdapter.notifyDataSetChanged()
                         soundListView.visibility = View.VISIBLE
                     }
-                    1 -> {
+                    2 -> {
                         buttonB = 2
                         soundListView.adapter = bCustomAdapter
                         bCustomAdapter.notifyDataSetChanged()
                         soundListView.visibility = View.VISIBLE
                     }
-                    2 -> {
+                    3 -> {
                         buttonB = 2
                         soundListView.adapter = cCustomAdapter
                         cCustomAdapter.notifyDataSetChanged()
                         soundListView.visibility = View.VISIBLE
                     }
-                    3 -> {
+                    4 -> {
                         buttonB = 2
                         soundListView.adapter = dCustomAdapter
                         dCustomAdapter.notifyDataSetChanged()
                         soundListView.visibility = View.VISIBLE
                     }
-                    4 -> {
+                    5 -> {
                         buttonB = 2
                         soundListView.adapter = eCustomAdapter
                         eCustomAdapter.notifyDataSetChanged()
                         soundListView.visibility = View.VISIBLE
                     }
-                    5 -> {
+                    6 -> {
                         buttonB = 2
                         soundListView.adapter = fCustomAdapter
                         fCustomAdapter.notifyDataSetChanged()
                         soundListView.visibility = View.VISIBLE
                     }
-                    6 -> {
+                    7 -> {
                         buttonB = 2
                         soundListView.adapter = gCustomAdapter
                         gCustomAdapter.notifyDataSetChanged()
                         soundListView.visibility = View.VISIBLE
                     }
-                    7 -> {
+                    8 -> {
                         buttonB = 2
                         soundListView.adapter = hCustomAdapter
                         hCustomAdapter.notifyDataSetChanged()
                         soundListView.visibility = View.VISIBLE
                     }
-                    8 -> {
+                    9 -> {
                         buttonB = 2
                         soundListView.adapter = iCustomAdapter
                         iCustomAdapter.notifyDataSetChanged()
                         soundListView.visibility = View.VISIBLE
                     }
-                    9 -> {
+                    10 -> {
                         buttonB = 2
                         soundListView.adapter = jCustomAdapter
                         jCustomAdapter.notifyDataSetChanged()
                         soundListView.visibility = View.VISIBLE
                     }
-                    10 -> {
+                    11 -> {
                         buttonB = 2
                         soundListView.adapter = kCustomAdapter
                         kCustomAdapter.notifyDataSetChanged()
                         soundListView.visibility = View.VISIBLE
                     }
-                    11 -> {
+                    12 -> {
                         buttonB = 2
                         soundListView.adapter = lCustomAdapter
                         lCustomAdapter.notifyDataSetChanged()
                         soundListView.visibility = View.VISIBLE
                     }
-                    12 -> {
+                    13 -> {
                         buttonB = 2
-                        soundListView.adapter = oCustomAdapter
-                        oCustomAdapter.notifyDataSetChanged()
+                        soundListView.adapter = mCustomAdapter
+                        mCustomAdapter.notifyDataSetChanged()
                         soundListView.visibility = View.VISIBLE
                     }
-                    13 -> {
+                    14 -> {
+                        buttonB = 2
+                        soundListView.adapter = aaCustomAdapter
+                        aaCustomAdapter.notifyDataSetChanged()
+                        soundListView.visibility = View.VISIBLE
+                    }
+                    15 -> {
+                        buttonB = 2
+                        soundListView.adapter = abCustomAdapter
+                        abCustomAdapter.notifyDataSetChanged()
+                        soundListView.visibility = View.VISIBLE
+                    }
+                    16 -> {
+                        buttonB = 2
+                        soundListView.adapter = acCustomAdapter
+                        acCustomAdapter.notifyDataSetChanged()
+                        soundListView.visibility = View.VISIBLE
+                    }
+                    17 -> {
+                        buttonB = 2
+                        soundListView.adapter = adCustomAdapter
+                        adCustomAdapter.notifyDataSetChanged()
+                        soundListView.visibility = View.VISIBLE
+                    }
+                    18 -> {
                         buttonB = 1
                         soundListView.adapter = sCustomAdapter
                         sCustomAdapter.notifyDataSetChanged()
                         soundListView.visibility = View.VISIBLE
                     }
-                    14 -> {
+                    19 -> {
                         selectEX()
                         buttonB = 1
                         soundListView.adapter = tCustomAdapter
@@ -1732,7 +2166,7 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
             }
         }
 
-        lmp = LoopMediaPlayer.create(this, Uri.parse("android.resource://" + packageName + "/raw/" + R.raw.rimshot_01))
+        lmp = LoopMediaPlayer.create(this, Uri.parse("android.resource://" + packageName + "/raw/" + R.raw.bass_100_01))
 
         lmp.stop()
 

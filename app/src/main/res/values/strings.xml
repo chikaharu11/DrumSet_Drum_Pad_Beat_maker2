@@ -55,19 +55,24 @@
     <string name="Loaded">Loading… Please wait.</string>
 
     <string-array name="spinnerItems">
-        <item>BASS DRUM [BD]</item>
-        <item>HAND CLAP [CP]</item>
-        <item>CLAVES [CL]</item>
-        <item>CLSD HI HAT [CH]</item>
-        <item>CONGA [HC-MC-LC]</item>
-        <item>COWBELL [CB]</item>
-        <item>CYMBAL [CY]</item>
-        <item>MARACAS [MA]</item>
-        <item>OPEN HI HAT [OH]</item>
-        <item>RIMSHOT [RS]</item>
-        <item>SNARE DRUM [SD]</item>
-        <item>TOM [LT-MT-HT]</item>
-        <item>Sample Loops</item>
+        <item>Basic Drum sets</item>
+        <item>Cymbals</item>
+        <item>Cymbals [Trash Crashes]</item>
+        <item>Hi Hats [Acoustic]</item>
+        <item>Hi Hats [Sabian B8]</item>
+        <item>Hi Hats [Zildjian K Hats]</item>
+        <item>Kicks [Acoustic]</item>
+        <item>Kicks [Kes Kick]</item>
+        <item>Kicks [Loose Kick]</item>
+        <item>Snares [Acoustic]</item>
+        <item>Snares [Ludwig A]</item>
+        <item>Snares [Ludwig B]</item>
+        <item>Snares [Ludwig C]</item>
+        <item>Snares [Piccolo Sidestick]</item>
+        <item>Snares [Sonor Force 3000]</item>
+        <item>Snares [Tama Wood]</item>
+        <item>Snares [Wooden Piccolo]</item>
+        <item>Toms</item>
         <item>Internal sounds</item>
         <item>External sounds</item>
     </string-array>
