@@ -435,7 +435,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
             arrayOf(
                 "Change Pad Sounds",
                 "Random Pad Sounds",
-                "Change Pad Colors",
                 "Save Pad Settings",
                 "Load Pad Settings",
                 "Adjusting Sounds",
@@ -449,7 +448,6 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
             arrayOf(
                 "Change Pad Sounds",
                 "Random Pad Sounds",
-                "Change Pad Colors",
                 "Save Pad Settings",
                 "Load Pad Settings",
                 "Adjusting Sounds",
@@ -508,7 +506,7 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                 }
                 "Change to Play Mode" -> {
                     paste = 0
-                    binding.toolbarMain.setBackgroundColor(Color.parseColor("#5A5A66"))
+                    binding.toolbarMain.setBackgroundColor(Color.parseColor("#292929"))
                     Toast.makeText(applicationContext, R.string.change2, Toast.LENGTH_LONG).show()
                     gridView.visibility = View.INVISIBLE
                     gridView.adapter = adapter
