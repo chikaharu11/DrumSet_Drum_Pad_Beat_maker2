@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
     private var padText11 = "tom_01"
     private var padText12 = "tom_03"
     private var padText13 = "cymbal_02"
-    private var padText14 = "cymbal_03"
+    private var padText14 = "tom_4"
     private var padText15 = "tom_3"
 
     private var count = 0.5f
@@ -608,22 +608,54 @@ class MainActivity : AppCompatActivity(), CustomAdapterListener {
                     }
                     gridView.visibility = View.INVISIBLE
                 }
+                //private var padText1 = "cymbal_01"
+                //    private var padText2 = "open_hat_01"
+                //    private var padText3 = "closed_hat_01"
+                //    private var padText4 = "cycdh_crash_01"
+                //    private var padText5 = "tom_02"
+                //    private var padText6 = "snare_01"
+                //    private var padText7 = "cycdh_loosekick_08"
+                //    private var padText8 = "cycdh_acoukick_01"
+                //    private var padText9 = "kick_01"
+                //    private var padText10 = "cycdh_trasha_01"
+                //    private var padText11 = "tom_01"
+                //    private var padText12 = "tom_03"
+                //    private var padText13 = "cymbal_02"
+                //    private var padText14 = "tom_4"
+                //    private var padText15 = "tom_3"
+                //<item>Cymbals</item> a
+                //        <item>Cymbals [Trash Crashes]</item> b
+                //        <item>Hi Hats [Acoustic]</item> c
+                //        <item>Hi Hats [Sabian B8]</item> d
+                //        <item>Hi Hats [Zildjian K Hats]</item> e
+                //        <item>Kicks [Acoustic]</item> f
+                //        <item>Kicks [Kes Kick]</item> g
+                //        <item>Kicks [Loose Kick]</item> h
+                //        <item>Snares [Acoustic]</item> ijklm aa ab ac
+                //        <item>Snares [Ludwig A]</item>
+                //        <item>Snares [Ludwig B]</item>
+                //        <item>Snares [Ludwig C]</item>
+                //        <item>Snares [Piccolo Sidestick]</item>
+                //        <item>Snares [Sonor Force 3000]</item>
+                //        <item>Snares [Tama Wood]</item>
+                //        <item>Snares [Wooden Piccolo]</item>
+                //        <item>Toms</item> ad
                 "Random Pad Sounds" -> {
-                    padText1 = (aSoundList+bSoundList+cSoundList+dSoundList+eSoundList+fSoundList+gSoundList+hSoundList+iSoundList+jSoundList+kSoundList+lSoundList).random().name.replace(".ogg","")
-                    padText2 = (aSoundList+bSoundList+cSoundList+dSoundList+eSoundList+fSoundList+gSoundList+hSoundList+iSoundList+jSoundList+kSoundList+lSoundList).random().name.replace(".ogg","")
-                    padText3 = (aSoundList+bSoundList+cSoundList+dSoundList+eSoundList+fSoundList+gSoundList+hSoundList+iSoundList+jSoundList+kSoundList+lSoundList).random().name.replace(".ogg","")
-                    padText4 = (aSoundList+bSoundList+cSoundList+dSoundList+eSoundList+fSoundList+gSoundList+hSoundList+iSoundList+jSoundList+kSoundList+lSoundList).random().name.replace(".ogg","")
-                    padText5 = (aSoundList+bSoundList+cSoundList+dSoundList+eSoundList+fSoundList+gSoundList+hSoundList+iSoundList+jSoundList+kSoundList+lSoundList).random().name.replace(".ogg","")
-                    padText6 = (aSoundList+bSoundList+cSoundList+dSoundList+eSoundList+fSoundList+gSoundList+hSoundList+iSoundList+jSoundList+kSoundList+lSoundList).random().name.replace(".ogg","")
-                    padText7 = (aSoundList+bSoundList+cSoundList+dSoundList+eSoundList+fSoundList+gSoundList+hSoundList+iSoundList+jSoundList+kSoundList+lSoundList).random().name.replace(".ogg","")
-                    padText8 = (aSoundList+bSoundList+cSoundList+dSoundList+eSoundList+fSoundList+gSoundList+hSoundList+iSoundList+jSoundList+kSoundList+lSoundList).random().name.replace(".ogg","")
-                    padText9 = (aSoundList+bSoundList+cSoundList+dSoundList+eSoundList+fSoundList+gSoundList+hSoundList+iSoundList+jSoundList+kSoundList+lSoundList).random().name.replace(".ogg","")
-                    padText10 = (aSoundList+bSoundList+cSoundList+dSoundList+eSoundList+fSoundList+gSoundList+hSoundList+iSoundList+jSoundList+kSoundList+lSoundList).random().name.replace(".ogg","")
-                    padText11 = (aSoundList+bSoundList+cSoundList+dSoundList+eSoundList+fSoundList+gSoundList+hSoundList+iSoundList+jSoundList+kSoundList+lSoundList).random().name.replace(".ogg","")
-                    padText12 = (aSoundList+bSoundList+cSoundList+dSoundList+eSoundList+fSoundList+gSoundList+hSoundList+iSoundList+jSoundList+kSoundList+lSoundList).random().name.replace(".ogg","")
-                    padText13 = (aSoundList+bSoundList+cSoundList+dSoundList+eSoundList+fSoundList+gSoundList+hSoundList+iSoundList+jSoundList+kSoundList+lSoundList).random().name.replace(".ogg","")
-                    padText14 = (aSoundList+bSoundList+cSoundList+dSoundList+eSoundList+fSoundList+gSoundList+hSoundList+iSoundList+jSoundList+kSoundList+lSoundList).random().name.replace(".ogg","")
-                    padText15 = (aSoundList+bSoundList+cSoundList+dSoundList+eSoundList+fSoundList+gSoundList+hSoundList+iSoundList+jSoundList+kSoundList+lSoundList).random().name.replace(".ogg","")
+                    padText1 = (aSoundList+bSoundList).random().name.replace(".ogg","")
+                    padText2 = (cSoundList+dSoundList+eSoundList).random().name.replace(".ogg","")
+                    padText3 = (cSoundList+dSoundList+eSoundList).random().name.replace(".ogg","")
+                    padText4 = (aSoundList+bSoundList).random().name.replace(".ogg","")
+                    padText5 = (adSoundList).random().name.replace(".ogg","")
+                    padText6 = (iSoundList+jSoundList+kSoundList+lSoundList+mSoundList+aaSoundList+abSoundList+acSoundList).random().name.replace(".ogg","")
+                    padText7 = (fSoundList+gSoundList+hSoundList).random().name.replace(".ogg","")
+                    padText8 = (fSoundList+gSoundList+hSoundList).random().name.replace(".ogg","")
+                    padText9 = (fSoundList+gSoundList+hSoundList).random().name.replace(".ogg","")
+                    padText10 = (aSoundList+bSoundList).random().name.replace(".ogg","")
+                    padText11 = (adSoundList).random().name.replace(".ogg","")
+                    padText12 = (adSoundList).random().name.replace(".ogg","")
+                    padText13 = (aSoundList+bSoundList).random().name.replace(".ogg","")
+                    padText14 = (adSoundList).random().name.replace(".ogg","")
+                    padText15 = (adSoundList).random().name.replace(".ogg","")
                     binding.includeMainView.textView.text = padText1.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
                     binding.includeMainView2.textView.text = padText2.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
                     binding.includeMainView3.textView.text = padText3.replace("tr_8", "TR-8").replace("tr_909", "TR-909").replace("_"," ").uppercase()
